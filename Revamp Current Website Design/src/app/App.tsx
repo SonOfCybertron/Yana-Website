@@ -201,23 +201,23 @@ interface Product { id: number; name: string; brand: string; category: string; t
 function SectionLabel({ children, light }: { children: string; light?: boolean }) {
   return (
     <div className="inline-flex items-center gap-2 mb-3">
-      <span className={`w-5 h-px ${light ? "bg-[#4ade80]" : "bg-[#1B6B3A]"}`} />
-      <span className={`text-[11px] font-bold tracking-[0.18em] uppercase ${light ? "text-[#4ade80]" : "text-[#1B6B3A]"}`}>{children}</span>
+      <span className={`w-5 h-px ${light ? "bg-[#9ccc65]" : "bg-[#69b400]"}`} />
+      <span className={`text-[11px] font-bold tracking-[0.18em] uppercase ${light ? "text-[#9ccc65]" : "text-[#69b400]"}`}>{children}</span>
     </div>
   );
 }
 
 function TagBadge({ tag }: { tag: string }) {
   if (!tag) return null;
-  const cls = tag === "New" ? "bg-[#1E6FA8] text-white" : tag === "Best Seller" ? "bg-amber-500 text-white" : "bg-[#1B6B3A] text-white";
+  const cls = tag === "New" ? "bg-[#60A5FA] text-white" : tag === "Best Seller" ? "bg-amber-500 text-white" : "bg-[#69b400] text-white";
   return <span className={`text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full ${cls}`}>{tag}</span>;
 }
 
 function FormInput({ label, required: req, ...props }: React.InputHTMLAttributes<HTMLInputElement> & { label: string; required?: boolean }) {
   return (
     <div>
-      <label className="text-xs font-semibold text-[#1A1F2E] block mb-1.5">{label}{req && <span className="text-[#1B6B3A] ml-0.5">*</span>}</label>
-      <input required={req} {...props} className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm bg-white focus:outline-none focus:border-[#1B6B3A] focus:ring-2 focus:ring-[#1B6B3A]/10 transition-all placeholder:text-gray-400" />
+      <label className="text-xs font-semibold text-[#1e293b] block mb-1.5">{label}{req && <span className="text-[#69b400] ml-0.5">*</span>}</label>
+      <input required={req} {...props} className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm bg-white focus:outline-none focus:border-[#69b400] focus:ring-2 focus:ring-[#69b400]/10 transition-all placeholder:text-gray-400" />
     </div>
   );
 }
@@ -225,7 +225,7 @@ function FormInput({ label, required: req, ...props }: React.InputHTMLAttributes
 function SubmitBtn({ loading, children }: { loading: boolean; children: React.ReactNode }) {
   return (
     <button type="submit" disabled={loading}
-      className="w-full bg-[#1B6B3A] text-white font-semibold py-3.5 rounded-xl hover:bg-[#155a30] active:scale-[0.99] transition-all flex items-center justify-center gap-2 disabled:opacity-60 shadow-lg shadow-[#1B6B3A]/20">
+      className="w-full bg-[#69b400] text-white font-semibold py-3.5 rounded-xl hover:bg-[#558b2f] active:scale-[0.99] transition-all flex items-center justify-center gap-2 disabled:opacity-60 shadow-lg shadow-[#69b400]/20">
       {loading ? <><Loader2 size={16} className="animate-spin" /> Submitting…</> : children}
     </button>
   );
@@ -262,7 +262,7 @@ function MobileBottomBar({ setPage }: { setPage: (p: Page) => void }) {
             { icon: Mail, label: "Email", action: () => setPage("contact") },
           ].map(({ icon: Icon, label, action }) => (
             <button key={label} onClick={action}
-              className="flex flex-col items-center gap-1 py-3 text-[#5A6478] hover:text-[#1B6B3A] active:bg-gray-50 transition-colors">
+              className="flex flex-col items-center gap-1 py-3 text-[#5A6478] hover:text-[#69b400] active:bg-gray-50 transition-colors">
               <Icon size={18} />
               <span className="text-[10px] font-semibold">{label}</span>
             </button>
@@ -277,15 +277,15 @@ function MobileBottomBar({ setPage }: { setPage: (p: Page) => void }) {
             <div className="w-10 h-1 bg-gray-200 rounded-full mx-auto mb-5" />
             {quoteState === "success" ? (
               <div className="text-center py-6">
-                <CheckCircle size={40} className="text-[#1B6B3A] mx-auto mb-3" />
-                <p className="font-bold text-[#1A1F2E]">Request Sent!</p>
+                <CheckCircle size={40} className="text-[#69b400] mx-auto mb-3" />
+                <p className="font-bold text-[#1e293b]">Request Sent!</p>
                 <p className="text-[#5A6478] text-sm mt-1">We'll get back to you within 24 hours.</p>
-                <button onClick={closeQuote} className="mt-4 text-sm text-[#1B6B3A] font-semibold">Close</button>
+                <button onClick={closeQuote} className="mt-4 text-sm text-[#69b400] font-semibold">Close</button>
               </div>
             ) : (
               <form onSubmit={handleQuoteSubmit}>
                 <div className="flex items-center justify-between mb-5">
-                  <h3 className="font-['Barlow_Condensed'] text-2xl font-bold text-[#1A1F2E]">Quick Quote Request</h3>
+                  <h3 className="font-['Barlow_Condensed'] text-2xl font-bold text-[#1e293b]">Quick Quote Request</h3>
                   <button type="button" onClick={closeQuote} className="p-1.5 rounded-lg hover:bg-gray-100"><X size={18} /></button>
                 </div>
                 <div className="space-y-3">
@@ -293,8 +293,8 @@ function MobileBottomBar({ setPage }: { setPage: (p: Page) => void }) {
                   <FormInput label="Email" required type="email" placeholder="your@email.com" value={quoteForm.email} onChange={e => setQuoteForm(p => ({ ...p, email: e.target.value }))} />
                   <FormInput label="Phone" type="tel" placeholder="+63 9XX XXX XXXX" value={quoteForm.phone} onChange={e => setQuoteForm(p => ({ ...p, phone: e.target.value }))} />
                   <div>
-                    <label className="text-xs font-semibold text-[#1A1F2E] block mb-1.5">Product of Interest</label>
-                    <input placeholder="Product name or model" value={quoteForm.product} onChange={e => setQuoteForm(p => ({ ...p, product: e.target.value }))} className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#1B6B3A] focus:ring-2 focus:ring-[#1B6B3A]/10 transition-all" />
+                    <label className="text-xs font-semibold text-[#1e293b] block mb-1.5">Product of Interest</label>
+                    <input placeholder="Product name or model" value={quoteForm.product} onChange={e => setQuoteForm(p => ({ ...p, product: e.target.value }))} className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#69b400] focus:ring-2 focus:ring-[#69b400]/10 transition-all" />
                   </div>
                   <SubmitBtn loading={quoteState === "loading"}><MessageSquare size={15} /> Send Request</SubmitBtn>
                 </div>
@@ -339,10 +339,10 @@ function QuickAccessWidget({ setPage, t }: { setPage: (p: Page) => void; t: type
   function closeInquiry() { setInquiryOpen(false); setIqState("idle"); setIqForm({ name: "", company: "", email: "", product: "", message: "" }); }
 
   const actions = [
-    { icon: MessageSquare, label: t.requestQuote, color: "bg-[#1B6B3A]", action: () => setPage("contact") },
-    { icon: PhoneCall, label: t.contactSales, color: "bg-[#1E6FA8]", action: () => setPage("contact") },
+    { icon: MessageSquare, label: t.requestQuote, color: "bg-[#69b400]", action: () => setPage("contact") },
+    { icon: PhoneCall, label: t.contactSales, color: "bg-[#60A5FA]", action: () => setPage("contact") },
     { icon: FileText, label: t.productInquiry, color: "bg-[#4A5568]", action: () => setInquiryOpen(true) },
-    { icon: PhoneIncoming, label: t.requestCallback, color: "bg-[#2D9251]", action: () => setCallbackOpen(true) },
+    { icon: PhoneIncoming, label: t.requestCallback, color: "bg-[#7cb342]", action: () => setCallbackOpen(true) },
   ];
 
   return (
@@ -354,7 +354,7 @@ function QuickAccessWidget({ setPage, t }: { setPage: (p: Page) => void; t: type
             <div className="space-y-1.5">
               {actions.map(a => (
                 <button key={a.label} onClick={() => { a.action(); setOpen(false); }}
-                  className="w-full flex items-center gap-2.5 text-sm font-medium text-[#1A1F2E] hover:text-[#1B6B3A] bg-gray-50 hover:bg-[#E8F2ED] rounded-lg px-3 py-2.5 transition-all text-left">
+                  className="w-full flex items-center gap-2.5 text-sm font-medium text-[#1e293b] hover:text-[#69b400] bg-gray-50 hover:bg-[#f0f9e8] rounded-lg px-3 py-2.5 transition-all text-left">
                   <div className={`${a.color} w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0`}>
                     <a.icon size={13} className="text-white" />
                   </div>
@@ -365,7 +365,7 @@ function QuickAccessWidget({ setPage, t }: { setPage: (p: Page) => void; t: type
           </div>
         )}
         <button onClick={() => setOpen(o => !o)}
-          className="bg-[#1B6B3A] hover:bg-[#155a30] text-white rounded-l-xl px-3 py-5 shadow-xl transition-all flex flex-col items-center gap-2">
+          className="bg-[#69b400] hover:bg-[#558b2f] text-white rounded-l-xl px-3 py-5 shadow-xl transition-all flex flex-col items-center gap-2">
           {open ? <ChevronRight size={15} /> : <ChevronLeft size={15} />}
           <span className="text-[9px] font-bold tracking-widest uppercase" style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}>
             {t.quickAccess}
@@ -378,15 +378,15 @@ function QuickAccessWidget({ setPage, t }: { setPage: (p: Page) => void; t: type
         <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4" onClick={closeCallback}>
           <div className="bg-white rounded-2xl p-7 w-full max-w-md shadow-2xl" onClick={e => e.stopPropagation()}>
             <div className="flex items-center justify-between mb-5">
-              <h3 className="font-['Barlow_Condensed'] text-2xl font-bold text-[#1A1F2E]">{t.requestCallback}</h3>
+              <h3 className="font-['Barlow_Condensed'] text-2xl font-bold text-[#1e293b]">{t.requestCallback}</h3>
               <button type="button" onClick={closeCallback} className="p-1.5 rounded-lg hover:bg-gray-100"><X size={18} /></button>
             </div>
             {cbState === "success" ? (
               <div className="text-center py-6">
-                <CheckCircle size={40} className="text-[#1B6B3A] mx-auto mb-3" />
-                <p className="font-bold text-[#1A1F2E]">Callback Requested!</p>
+                <CheckCircle size={40} className="text-[#69b400] mx-auto mb-3" />
+                <p className="font-bold text-[#1e293b]">Callback Requested!</p>
                 <p className="text-[#5A6478] text-sm mt-1">Our team will call you at your preferred time.</p>
-                <button onClick={closeCallback} className="mt-4 text-sm text-[#1B6B3A] font-semibold">Close</button>
+                <button onClick={closeCallback} className="mt-4 text-sm text-[#69b400] font-semibold">Close</button>
               </div>
             ) : (
               <form onSubmit={handleCallback} className="space-y-3">
@@ -394,8 +394,8 @@ function QuickAccessWidget({ setPage, t }: { setPage: (p: Page) => void; t: type
                 <FormInput label="Phone Number" required type="tel" placeholder="+63 9XX XXX XXXX" value={cbForm.phone} onChange={e => setCbForm(p => ({ ...p, phone: e.target.value }))} />
                 <FormInput label="Company" placeholder="Your organization" value={cbForm.company} onChange={e => setCbForm(p => ({ ...p, company: e.target.value }))} />
                 <div>
-                  <label className="text-xs font-semibold text-[#1A1F2E] block mb-1.5">Preferred Time</label>
-                  <select value={cbForm.time} onChange={e => setCbForm(p => ({ ...p, time: e.target.value }))} className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#1B6B3A] bg-white">
+                  <label className="text-xs font-semibold text-[#1e293b] block mb-1.5">Preferred Time</label>
+                  <select value={cbForm.time} onChange={e => setCbForm(p => ({ ...p, time: e.target.value }))} className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#69b400] bg-white">
                     <option>Morning (8AM–12PM)</option>
                     <option>Afternoon (1PM–5PM)</option>
                   </select>
@@ -412,15 +412,15 @@ function QuickAccessWidget({ setPage, t }: { setPage: (p: Page) => void; t: type
         <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4" onClick={closeInquiry}>
           <div className="bg-white rounded-2xl p-7 w-full max-w-md shadow-2xl" onClick={e => e.stopPropagation()}>
             <div className="flex items-center justify-between mb-5">
-              <h3 className="font-['Barlow_Condensed'] text-2xl font-bold text-[#1A1F2E]">{t.productInquiry}</h3>
+              <h3 className="font-['Barlow_Condensed'] text-2xl font-bold text-[#1e293b]">{t.productInquiry}</h3>
               <button type="button" onClick={closeInquiry} className="p-1.5 rounded-lg hover:bg-gray-100"><X size={18} /></button>
             </div>
             {iqState === "success" ? (
               <div className="text-center py-6">
-                <CheckCircle size={40} className="text-[#1B6B3A] mx-auto mb-3" />
-                <p className="font-bold text-[#1A1F2E]">Inquiry Submitted!</p>
+                <CheckCircle size={40} className="text-[#69b400] mx-auto mb-3" />
+                <p className="font-bold text-[#1e293b]">Inquiry Submitted!</p>
                 <p className="text-[#5A6478] text-sm mt-1">We'll respond within 24 hours.</p>
-                <button onClick={closeInquiry} className="mt-4 text-sm text-[#1B6B3A] font-semibold">Close</button>
+                <button onClick={closeInquiry} className="mt-4 text-sm text-[#69b400] font-semibold">Close</button>
               </div>
             ) : (
               <form onSubmit={handleInquiry} className="space-y-3">
@@ -429,8 +429,8 @@ function QuickAccessWidget({ setPage, t }: { setPage: (p: Page) => void; t: type
                 <FormInput label="Email" required type="email" placeholder="your@email.com" value={iqForm.email} onChange={e => setIqForm(p => ({ ...p, email: e.target.value }))} />
                 <FormInput label="Product of Interest" placeholder="Product name or model" value={iqForm.product} onChange={e => setIqForm(p => ({ ...p, product: e.target.value }))} />
                 <div>
-                  <label className="text-xs font-semibold text-[#1A1F2E] block mb-1.5">Message</label>
-                  <textarea rows={3} placeholder="Describe your requirements..." value={iqForm.message} onChange={e => setIqForm(p => ({ ...p, message: e.target.value }))} className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#1B6B3A] focus:ring-2 focus:ring-[#1B6B3A]/10 transition-all resize-none" />
+                  <label className="text-xs font-semibold text-[#1e293b] block mb-1.5">Message</label>
+                  <textarea rows={3} placeholder="Describe your requirements..." value={iqForm.message} onChange={e => setIqForm(p => ({ ...p, message: e.target.value }))} className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#69b400] focus:ring-2 focus:ring-[#69b400]/10 transition-all resize-none" />
                 </div>
                 <SubmitBtn loading={iqState === "loading"}><MessageSquare size={15} /> Submit Inquiry</SubmitBtn>
               </form>
@@ -461,7 +461,7 @@ function NavBar({ page, setPage, lang, setLang, t }: { page: Page; setPage: (p: 
   return (
     <>
       {/* Top contact bar — desktop only */}
-      <div className="hidden md:flex bg-[#1A1F2E] text-white text-xs py-2 px-6 items-center justify-between">
+      <div className="hidden md:flex bg-[#1e293b] text-white text-xs py-2 px-6 items-center justify-between">
         <div className="flex items-center gap-5">
           <a href="tel:+639277943497" className="flex items-center gap-1.5 text-gray-300 hover:text-white transition-colors"><Phone size={11} /> +63 927 794 3497</a>
           <a href="mailto:info@yanachemodities.com" className="flex items-center gap-1.5 text-gray-300 hover:text-white transition-colors"><Mail size={11} /> info@yanachemodities.com</a>
@@ -470,7 +470,7 @@ function NavBar({ page, setPage, lang, setLang, t }: { page: Page; setPage: (p: 
           <span className="text-gray-500">{t.tagline}</span>
           <div className="flex items-center gap-0.5 bg-white/10 rounded-lg p-0.5">
             {(["EN", "FIL"] as Lang[]).map(l => (
-              <button key={l} onClick={() => setLang(l)} className={`px-3 py-1 rounded-md text-[10px] font-bold tracking-wider transition-all ${lang === l ? "bg-white text-[#1A1F2E]" : "text-gray-400 hover:text-white"}`}>{l}</button>
+              <button key={l} onClick={() => setLang(l)} className={`px-3 py-1 rounded-md text-[10px] font-bold tracking-wider transition-all ${lang === l ? "bg-white text-[#1e293b]" : "text-gray-400 hover:text-white"}`}>{l}</button>
             ))}
           </div>
         </div>
@@ -481,11 +481,11 @@ function NavBar({ page, setPage, lang, setLang, t }: { page: Page; setPage: (p: 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center h-16 gap-4">
           {/* Logo */}
           <button onClick={() => go("home")} className="flex items-center gap-2.5 flex-shrink-0 mr-2">
-            <div className="w-9 h-9 bg-gradient-to-br from-[#1B6B3A] to-[#155a30] rounded-xl flex items-center justify-center shadow-md shadow-[#1B6B3A]/30">
+            <div className="w-9 h-9 bg-gradient-to-br from-[#69b400] to-[#558b2f] rounded-xl flex items-center justify-center shadow-md shadow-[#69b400]/30">
               <FlaskConical size={19} className="text-white" />
             </div>
             <div className="leading-none hidden sm:block">
-              <div className="font-bold text-[14px] text-[#1A1F2E] font-['Barlow_Condensed'] tracking-wide">YANA CHEMODITIES</div>
+              <div className="font-bold text-[14px] text-[#1e293b] font-['Barlow_Condensed'] tracking-wide">YANA CHEMODITIES</div>
               <div className="text-[9px] text-[#5A6478] tracking-[0.2em] uppercase">Inc.</div>
             </div>
           </button>
@@ -496,19 +496,19 @@ function NavBar({ page, setPage, lang, setLang, t }: { page: Page; setPage: (p: 
               <Search size={14} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400" />
               <input onKeyDown={e => { if (e.key === "Enter") go("products"); }}
                 placeholder={t.searchPlaceholder}
-                className="w-full pl-9 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-[#1B6B3A] focus:bg-white focus:ring-2 focus:ring-[#1B6B3A]/10 transition-all placeholder:text-gray-400" />
+                className="w-full pl-9 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-[#69b400] focus:bg-white focus:ring-2 focus:ring-[#69b400]/10 transition-all placeholder:text-gray-400" />
             </div>
           </div>
 
           {/* Desktop links */}
           <div className="hidden md:flex items-center gap-1 ml-auto">
             {[{ label: t.home, page: "home" as Page }, { label: t.about, page: "about" as Page }].map(({ label, page: p }) => (
-              <button key={p} onClick={() => go(p)} className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${page === p ? "text-[#1B6B3A] bg-[#E8F2ED]" : "text-[#4A5568] hover:text-[#1B6B3A] hover:bg-gray-50"}`}>{label}</button>
+              <button key={p} onClick={() => go(p)} className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${page === p ? "text-[#69b400] bg-[#f0f9e8]" : "text-[#4A5568] hover:text-[#69b400] hover:bg-gray-50"}`}>{label}</button>
             ))}
 
             {/* Products */}
             <div className="relative" onMouseEnter={() => setProductMenuOpen(true)} onMouseLeave={() => setProductMenuOpen(false)}>
-              <button className={`px-3 py-2 rounded-lg text-sm font-medium flex items-center gap-1 transition-colors ${page === "products" ? "text-[#1B6B3A] bg-[#E8F2ED]" : "text-[#4A5568] hover:text-[#1B6B3A] hover:bg-gray-50"}`}>
+              <button className={`px-3 py-2 rounded-lg text-sm font-medium flex items-center gap-1 transition-colors ${page === "products" ? "text-[#69b400] bg-[#f0f9e8]" : "text-[#4A5568] hover:text-[#69b400] hover:bg-gray-50"}`}>
                 {t.products} <ChevronDown size={13} className={`transition-transform ${productMenuOpen ? "rotate-180" : ""}`} />
               </button>
               {productMenuOpen && (
@@ -516,17 +516,17 @@ function NavBar({ page, setPage, lang, setLang, t }: { page: Page; setPage: (p: 
                   <div className="bg-white rounded-2xl shadow-2xl shadow-black/10 border border-gray-100 p-6 grid grid-cols-3 gap-5">
                     <div>
                       <p className="text-[10px] font-bold tracking-widest uppercase text-[#5A6478] mb-3">Categories</p>
-                      {CATEGORIES.map(c => <button key={c} onClick={() => go("products")} className="block text-sm text-[#4A5568] hover:text-[#1B6B3A] mb-2 text-left transition-colors">{c}</button>)}
+                      {CATEGORIES.map(c => <button key={c} onClick={() => go("products")} className="block text-sm text-[#4A5568] hover:text-[#69b400] mb-2 text-left transition-colors">{c}</button>)}
                     </div>
                     <div>
                       <p className="text-[10px] font-bold tracking-widest uppercase text-[#5A6478] mb-3">Top Brands</p>
-                      {BRANDS.slice(0, 6).map(b => <button key={b} onClick={() => go("products")} className="block text-sm text-[#4A5568] hover:text-[#1B6B3A] mb-2 transition-colors">{b}</button>)}
-                      <button onClick={() => go("products")} className="text-xs text-[#1B6B3A] font-semibold flex items-center gap-1 mt-1 hover:underline">All brands <ChevronRight size={11} /></button>
+                      {BRANDS.slice(0, 6).map(b => <button key={b} onClick={() => go("products")} className="block text-sm text-[#4A5568] hover:text-[#69b400] mb-2 transition-colors">{b}</button>)}
+                      <button onClick={() => go("products")} className="text-xs text-[#69b400] font-semibold flex items-center gap-1 mt-1 hover:underline">All brands <ChevronRight size={11} /></button>
                     </div>
-                    <div className="bg-gradient-to-br from-[#E8F2ED] to-[#d4ead9] rounded-xl p-4">
-                      <p className="text-[10px] font-bold tracking-widest uppercase text-[#1B6B3A] mb-3">Quick Access</p>
+                    <div className="bg-gradient-to-br from-[#f0f9e8] to-[#e8f5e9] rounded-xl p-4">
+                      <p className="text-[10px] font-bold tracking-widest uppercase text-[#69b400] mb-3">Quick Access</p>
                       {[{ icon: Star, label: t.featuredProducts, page: "products" as Page }, { icon: Zap, label: "New Arrivals", page: "products" as Page }, { icon: Download, label: "Download Catalog", page: "resources" as Page }].map(item => (
-                        <button key={item.label} onClick={() => go(item.page)} className="flex items-center gap-2 text-sm text-[#2D5A35] hover:text-[#1B6B3A] mb-3 last:mb-0 w-full font-medium">
+                        <button key={item.label} onClick={() => go(item.page)} className="flex items-center gap-2 text-sm text-[#2D5A35] hover:text-[#69b400] mb-3 last:mb-0 w-full font-medium">
                           <item.icon size={14} /> {item.label}
                         </button>
                       ))}
@@ -538,15 +538,15 @@ function NavBar({ page, setPage, lang, setLang, t }: { page: Page; setPage: (p: 
 
             {/* Services */}
             <div className="relative" onMouseEnter={() => setServiceMenuOpen(true)} onMouseLeave={() => setServiceMenuOpen(false)}>
-              <button className={`px-3 py-2 rounded-lg text-sm font-medium flex items-center gap-1 transition-colors ${page === "services" ? "text-[#1B6B3A] bg-[#E8F2ED]" : "text-[#4A5568] hover:text-[#1B6B3A] hover:bg-gray-50"}`}>
+              <button className={`px-3 py-2 rounded-lg text-sm font-medium flex items-center gap-1 transition-colors ${page === "services" ? "text-[#69b400] bg-[#f0f9e8]" : "text-[#4A5568] hover:text-[#69b400] hover:bg-gray-50"}`}>
                 {t.services} <ChevronDown size={13} className={`transition-transform ${serviceMenuOpen ? "rotate-180" : ""}`} />
               </button>
               {serviceMenuOpen && (
                 <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 w-56">
                   <div className="bg-white rounded-2xl shadow-2xl shadow-black/10 border border-gray-100 p-4">
                     {SERVICES.map(s => (
-                      <button key={s.title} onClick={() => go("services")} className="flex items-center gap-3 text-sm text-[#4A5568] hover:text-[#1B6B3A] hover:bg-gray-50 rounded-lg px-3 py-2.5 mb-1 last:mb-0 text-left w-full transition-colors">
-                        <s.icon size={14} className="text-[#1B6B3A]" /> {s.title}
+                      <button key={s.title} onClick={() => go("services")} className="flex items-center gap-3 text-sm text-[#4A5568] hover:text-[#69b400] hover:bg-gray-50 rounded-lg px-3 py-2.5 mb-1 last:mb-0 text-left w-full transition-colors">
+                        <s.icon size={14} className="text-[#69b400]" /> {s.title}
                       </button>
                     ))}
                   </div>
@@ -556,20 +556,20 @@ function NavBar({ page, setPage, lang, setLang, t }: { page: Page; setPage: (p: 
 
             {/* Support */}
             <div className="relative" onMouseEnter={() => setSupportMenuOpen(true)} onMouseLeave={() => setSupportMenuOpen(false)}>
-              <button className={`px-3 py-2 rounded-lg text-sm font-medium flex items-center gap-1 transition-colors ${page === "support" || page === "resources" ? "text-[#1B6B3A] bg-[#E8F2ED]" : "text-[#4A5568] hover:text-[#1B6B3A] hover:bg-gray-50"}`}>
+              <button className={`px-3 py-2 rounded-lg text-sm font-medium flex items-center gap-1 transition-colors ${page === "support" || page === "resources" ? "text-[#69b400] bg-[#f0f9e8]" : "text-[#4A5568] hover:text-[#69b400] hover:bg-gray-50"}`}>
                 {t.support} <ChevronDown size={13} className={`transition-transform ${supportMenuOpen ? "rotate-180" : ""}`} />
               </button>
               {supportMenuOpen && (
                 <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 w-56">
                   <div className="bg-white rounded-2xl shadow-2xl shadow-black/10 border border-gray-100 p-4">
                     {[{ icon: HelpCircle, label: t.faqs }, { icon: Headset, label: t.helpDesk }, { icon: Users, label: t.contactDirectory }].map(item => (
-                      <button key={item.label} onClick={() => go("support")} className="flex items-center gap-3 text-sm text-[#4A5568] hover:text-[#1B6B3A] hover:bg-gray-50 rounded-lg px-3 py-2.5 mb-1 last:mb-0 w-full transition-colors">
-                        <item.icon size={14} className="text-[#1B6B3A]" /> {item.label}
+                      <button key={item.label} onClick={() => go("support")} className="flex items-center gap-3 text-sm text-[#4A5568] hover:text-[#69b400] hover:bg-gray-50 rounded-lg px-3 py-2.5 mb-1 last:mb-0 w-full transition-colors">
+                        <item.icon size={14} className="text-[#69b400]" /> {item.label}
                       </button>
                     ))}
                     <div className="border-t border-gray-100 mt-2 pt-2">
-                      <button onClick={() => go("resources")} className="flex items-center gap-3 text-sm text-[#4A5568] hover:text-[#1E6FA8] hover:bg-blue-50 rounded-lg px-3 py-2.5 w-full transition-colors">
-                        <BookOpen size={14} className="text-[#1E6FA8]" /> {t.resourceLibrary}
+                      <button onClick={() => go("resources")} className="flex items-center gap-3 text-sm text-[#4A5568] hover:text-[#60A5FA] hover:bg-blue-50 rounded-lg px-3 py-2.5 w-full transition-colors">
+                        <BookOpen size={14} className="text-[#60A5FA]" /> {t.resourceLibrary}
                       </button>
                     </div>
                   </div>
@@ -577,24 +577,24 @@ function NavBar({ page, setPage, lang, setLang, t }: { page: Page; setPage: (p: 
               )}
             </div>
 
-            <button onClick={() => go("contact")} className="ml-1 bg-[#1B6B3A] text-white text-sm font-semibold px-5 py-2.5 rounded-xl hover:bg-[#155a30] transition-all shadow-md shadow-[#1B6B3A]/25">
+            <button onClick={() => go("contact")} className="ml-1 bg-[#69b400] text-white text-sm font-semibold px-5 py-2.5 rounded-xl hover:bg-[#558b2f] transition-all shadow-md shadow-[#69b400]/25">
               {t.contact}
             </button>
 
             <div className="flex items-center gap-0.5 border border-gray-200 rounded-lg p-0.5 ml-1">
               {(["EN", "FIL"] as Lang[]).map(l => (
-                <button key={l} onClick={() => setLang(l)} className={`px-2 py-1 rounded text-[10px] font-bold transition-all ${lang === l ? "bg-[#1B6B3A] text-white" : "text-gray-400 hover:text-[#1B6B3A]"}`}>{l}</button>
+                <button key={l} onClick={() => setLang(l)} className={`px-2 py-1 rounded text-[10px] font-bold transition-all ${lang === l ? "bg-[#69b400] text-white" : "text-gray-400 hover:text-[#69b400]"}`}>{l}</button>
               ))}
             </div>
           </div>
 
           {/* Mobile right controls */}
           <div className="md:hidden ml-auto flex items-center gap-2">
-            <button onClick={() => go("products")} className="p-2 rounded-lg text-[#5A6478] hover:text-[#1B6B3A] hover:bg-gray-50"><Search size={20} /></button>
+            <button onClick={() => go("products")} className="p-2 rounded-lg text-[#5A6478] hover:text-[#69b400] hover:bg-gray-50"><Search size={20} /></button>
             <button onClick={() => setLang(lang === "EN" ? "FIL" : "EN")} className="flex items-center gap-1 border border-gray-200 rounded-lg px-2 py-1.5 text-[10px] font-bold text-[#5A6478]">
               <Languages size={12} /> {lang}
             </button>
-            <button onClick={() => setMobileOpen(!mobileOpen)} className="p-2 rounded-lg text-[#1A1F2E] hover:bg-gray-50">
+            <button onClick={() => setMobileOpen(!mobileOpen)} className="p-2 rounded-lg text-[#1e293b] hover:bg-gray-50">
               {mobileOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
           </div>
@@ -605,11 +605,11 @@ function NavBar({ page, setPage, lang, setLang, t }: { page: Page; setPage: (p: 
           <div className="md:hidden bg-white border-t border-gray-100 px-4 py-4 space-y-1 shadow-lg">
             <div className="relative mb-4">
               <Search size={14} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400" />
-              <input placeholder={t.searchPlaceholder} className="w-full pl-9 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-[#1B6B3A]" />
+              <input placeholder={t.searchPlaceholder} className="w-full pl-9 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-[#69b400]" />
             </div>
             {([["home", t.home], ["products", t.products], ["services", t.services], ["support", t.support], ["resources", t.resourceLibrary], ["about", t.about], ["careers", t.careers], ["contact", t.contact]] as [Page, string][]).map(([p, label]) => (
-              <button key={p} onClick={() => go(p)} className={`flex items-center justify-between w-full text-sm font-medium py-3 px-3 rounded-xl transition-colors ${page === p ? "text-[#1B6B3A] bg-[#E8F2ED]" : "text-[#1A1F2E] hover:bg-gray-50"}`}>
-                {label} {page === p && <ChevronRight size={14} className="text-[#1B6B3A]" />}
+              <button key={p} onClick={() => go(p)} className={`flex items-center justify-between w-full text-sm font-medium py-3 px-3 rounded-xl transition-colors ${page === p ? "text-[#69b400] bg-[#f0f9e8]" : "text-[#1e293b] hover:bg-gray-50"}`}>
+                {label} {page === p && <ChevronRight size={14} className="text-[#69b400]" />}
               </button>
             ))}
           </div>
@@ -623,22 +623,22 @@ function NavBar({ page, setPage, lang, setLang, t }: { page: Page; setPage: (p: 
 function ProductCard({ product, setPage, setSelectedProduct, t }: { product: Product; setPage: (p: Page) => void; setSelectedProduct: (p: Product) => void; t: typeof T["EN"] }) {
   return (
     <div onClick={() => { setSelectedProduct(product); setPage("product-detail"); }}
-      className="bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-[#1B6B3A]/25 hover:shadow-xl hover:shadow-[#1B6B3A]/8 transition-all duration-300 cursor-pointer group flex flex-col">
+      className="bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-[#69b400]/25 hover:shadow-xl hover:shadow-[#69b400]/8 transition-all duration-300 cursor-pointer group flex flex-col">
       <div className="relative h-44 sm:h-48 overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100">
         <img src={product.image} alt={product.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent" />
         {product.tag && <div className="absolute top-3 left-3"><TagBadge tag={product.tag} /></div>}
       </div>
       <div className="p-4 flex flex-col flex-1">
-        <p className="text-[10px] font-bold tracking-[0.15em] uppercase text-[#1B6B3A] mb-1">{product.brand}</p>
-        <h3 className="font-semibold text-[#1A1F2E] text-sm leading-snug mb-3 flex-1 line-clamp-2">{product.name}</h3>
+        <p className="text-[10px] font-bold tracking-[0.15em] uppercase text-[#69b400] mb-1">{product.brand}</p>
+        <h3 className="font-semibold text-[#1e293b] text-sm leading-snug mb-3 flex-1 line-clamp-2">{product.name}</h3>
         <div className="flex gap-2">
           <button onClick={e => { e.stopPropagation(); setPage("contact"); }}
-            className="flex-1 text-xs font-semibold bg-[#1B6B3A] text-white py-2.5 rounded-xl hover:bg-[#155a30] active:scale-[0.98] transition-all text-center shadow-sm">
+            className="flex-1 text-xs font-semibold bg-[#69b400] text-white py-2.5 rounded-xl hover:bg-[#558b2f] active:scale-[0.98] transition-all text-center shadow-sm">
             {t.requestQuote}
           </button>
           <button onClick={e => { e.stopPropagation(); }}
-            className="text-xs font-medium border border-[#1B6B3A]/30 text-[#1B6B3A] py-2.5 px-3 rounded-xl hover:bg-[#E8F2ED] active:scale-[0.98] transition-all">
+            className="text-xs font-medium border border-[#69b400]/30 text-[#69b400] py-2.5 px-3 rounded-xl hover:bg-[#f0f9e8] active:scale-[0.98] transition-all">
             <Download size={13} />
           </button>
         </div>
@@ -661,10 +661,10 @@ function HomePage({ setPage, setSelectedProduct, t, lang }: { setPage: (p: Page)
   return (
     <div>
       {/* ── Hero ── */}
-      <section className="relative bg-[#0F1520] min-h-[600px] sm:min-h-[640px] flex items-center overflow-hidden">
+      <section className="relative bg-[#0f172a] min-h-[600px] sm:min-h-[640px] flex items-center overflow-hidden">
         <div className="absolute inset-0">
           <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=1800&h=900&fit=crop&auto=format" alt="Laboratory" className="w-full h-full object-cover opacity-25" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0F1520] via-[#0F1520]/85 to-[#0F1520]/40" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0f172a] via-[#0f172a]/85 to-[#0f172a]/40" />
           {/* Dot grid */}
           <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: "radial-gradient(circle, #fff 1px, transparent 1px)", backgroundSize: "28px 28px" }} />
         </div>
@@ -673,18 +673,18 @@ function HomePage({ setPage, setSelectedProduct, t, lang }: { setPage: (p: Page)
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             {/* Left */}
             <div>
-              <div className="inline-flex items-center gap-2 bg-[#1B6B3A]/20 border border-[#1B6B3A]/40 text-[#4ade80] text-[11px] font-bold tracking-[0.15em] uppercase px-4 py-2 rounded-full mb-6 sm:mb-8">
-                <span className="w-1.5 h-1.5 bg-[#4ade80] rounded-full animate-pulse flex-shrink-0" />
+              <div className="inline-flex items-center gap-2 bg-[#69b400]/20 border border-[#69b400]/40 text-[#9ccc65] text-[11px] font-bold tracking-[0.15em] uppercase px-4 py-2 rounded-full mb-6 sm:mb-8">
+                <span className="w-1.5 h-1.5 bg-[#9ccc65] rounded-full animate-pulse flex-shrink-0" />
                 {t.tagline}
               </div>
               <h1 className="font-['Barlow_Condensed'] text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-[1.05] mb-5 sm:mb-6">
                 {t.heroTitle1}<br />
-                <span className="text-[#4ade80]">{t.heroTitle2}</span><br />
+                <span className="text-[#9ccc65]">{t.heroTitle2}</span><br />
                 {t.heroTitle3}
               </h1>
               <p className="text-gray-300 text-sm sm:text-base leading-relaxed mb-7 sm:mb-8 max-w-lg">{t.heroSub}</p>
               <div className="flex flex-col sm:flex-row gap-3">
-                <button onClick={() => setPage("products")} className="bg-[#1B6B3A] hover:bg-[#2D9251] text-white font-semibold px-6 py-3.5 rounded-xl transition-all flex items-center justify-center gap-2 shadow-lg shadow-[#1B6B3A]/30">
+                <button onClick={() => setPage("products")} className="bg-[#69b400] hover:bg-[#7cb342] text-white font-semibold px-6 py-3.5 rounded-xl transition-all flex items-center justify-center gap-2 shadow-lg shadow-[#69b400]/30">
                   {t.browseProducts} <ArrowRight size={16} />
                 </button>
                 <button onClick={() => setPage("contact")} className="border border-white/25 text-white hover:bg-white/10 font-medium px-6 py-3.5 rounded-xl transition-all flex items-center justify-center gap-2">
@@ -695,7 +695,7 @@ function HomePage({ setPage, setSelectedProduct, t, lang }: { setPage: (p: Page)
               <div className="flex flex-wrap gap-4 mt-8 sm:mt-10">
                 {[{ icon: Shield, text: "ISO Certified" }, { icon: Award, text: "Genuine Products" }, { icon: Users, text: "1,000+ Clients" }].map(b => (
                   <div key={b.text} className="flex items-center gap-1.5 text-gray-400 text-xs">
-                    <b.icon size={13} className="text-[#4ade80]" /> {b.text}
+                    <b.icon size={13} className="text-[#9ccc65]" /> {b.text}
                   </div>
                 ))}
               </div>
@@ -706,7 +706,7 @@ function HomePage({ setPage, setSelectedProduct, t, lang }: { setPage: (p: Page)
               <h3 className="text-white font-semibold text-base sm:text-lg mb-4">{t.findProduct}</h3>
               <div className="relative mb-3">
                 <Search size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400" />
-                <input placeholder={t.searchByName} className="w-full pl-10 pr-4 py-3 bg-white rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#1B6B3A] placeholder:text-gray-400" />
+                <input placeholder={t.searchByName} className="w-full pl-10 pr-4 py-3 bg-white rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#69b400] placeholder:text-gray-400" />
               </div>
               <div className="grid grid-cols-2 gap-2.5 mb-3">
                 {[{ label: t.allBrands, opts: BRANDS }, { label: t.allCategories, opts: CATEGORIES }].map(sel => (
@@ -716,7 +716,7 @@ function HomePage({ setPage, setSelectedProduct, t, lang }: { setPage: (p: Page)
                   </select>
                 ))}
               </div>
-              <button onClick={() => setPage("products")} className="w-full bg-[#1B6B3A] hover:bg-[#2D9251] text-white font-semibold py-3 rounded-xl transition-all flex items-center justify-center gap-2 shadow-lg shadow-[#1B6B3A]/30">
+              <button onClick={() => setPage("products")} className="w-full bg-[#69b400] hover:bg-[#7cb342] text-white font-semibold py-3 rounded-xl transition-all flex items-center justify-center gap-2 shadow-lg shadow-[#69b400]/30">
                 <Search size={15} /> {t.searchProducts}
               </button>
               <div className="mt-4 flex flex-wrap gap-2">
@@ -730,12 +730,12 @@ function HomePage({ setPage, setSelectedProduct, t, lang }: { setPage: (p: Page)
       </section>
 
       {/* ── Stats ── */}
-      <section className="bg-gradient-to-r from-[#1B6B3A] to-[#1a5c33] py-10 sm:py-12">
+      <section className="bg-gradient-to-r from-[#69b400] to-[#1a5c33] py-10 sm:py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
           {STATS.map(s => (
             <div key={s.label} className="text-center">
               <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white/10 rounded-xl flex items-center justify-center mx-auto mb-2.5">
-                <s.icon size={20} className="text-[#4ade80]" />
+                <s.icon size={20} className="text-[#9ccc65]" />
               </div>
               <div className="font-['Barlow_Condensed'] text-3xl sm:text-4xl font-bold text-white">{s.value}</div>
               <div className="text-green-200 text-xs sm:text-sm mt-1">{lang === "FIL" ? s.labelFIL : s.label}</div>
@@ -749,9 +749,9 @@ function HomePage({ setPage, setSelectedProduct, t, lang }: { setPage: (p: Page)
         <div className="flex items-end justify-between mb-6 sm:mb-8">
           <div>
             <SectionLabel>Curated Selection</SectionLabel>
-            <h2 className="font-['Barlow_Condensed'] text-3xl sm:text-4xl font-bold text-[#1A1F2E]">{t.featuredProducts}</h2>
+            <h2 className="font-['Barlow_Condensed'] text-3xl sm:text-4xl font-bold text-[#1e293b]">{t.featuredProducts}</h2>
           </div>
-          <button onClick={() => setPage("products")} className="hidden sm:flex text-sm text-[#1B6B3A] font-semibold items-center gap-1 hover:gap-2 transition-all">
+          <button onClick={() => setPage("products")} className="hidden sm:flex text-sm text-[#69b400] font-semibold items-center gap-1 hover:gap-2 transition-all">
             {t.viewAllProducts} <ArrowRight size={14} />
           </button>
         </div>
@@ -766,22 +766,22 @@ function HomePage({ setPage, setSelectedProduct, t, lang }: { setPage: (p: Page)
               )}
             </div>
             <div className="p-6 sm:p-8 flex flex-col justify-center">
-              <p className="text-[10px] font-bold tracking-[0.15em] uppercase text-[#1B6B3A] mb-1.5">{featured[carouselIdx]?.brand}</p>
-              <h3 className="font-['Barlow_Condensed'] text-2xl sm:text-3xl font-bold text-[#1A1F2E] mb-3 leading-tight">{featured[carouselIdx]?.name}</h3>
+              <p className="text-[10px] font-bold tracking-[0.15em] uppercase text-[#69b400] mb-1.5">{featured[carouselIdx]?.brand}</p>
+              <h3 className="font-['Barlow_Condensed'] text-2xl sm:text-3xl font-bold text-[#1e293b] mb-3 leading-tight">{featured[carouselIdx]?.name}</h3>
               <p className="text-[#5A6478] text-sm leading-relaxed mb-5 line-clamp-3">{featured[carouselIdx]?.description}</p>
               <div className="grid grid-cols-2 gap-2 mb-5">
                 {Object.entries(featured[carouselIdx]?.specs || {}).slice(0, 4).map(([k, v]) => (
                   <div key={k} className="bg-[#F4F6F8] rounded-xl p-2.5">
                     <div className="text-[9px] text-[#5A6478] uppercase tracking-wider font-semibold">{k}</div>
-                    <div className="text-xs font-bold text-[#1A1F2E] font-['JetBrains_Mono'] mt-0.5">{v}</div>
+                    <div className="text-xs font-bold text-[#1e293b] font-['JetBrains_Mono'] mt-0.5">{v}</div>
                   </div>
                 ))}
               </div>
               <div className="flex gap-2.5">
-                <button onClick={() => setPage("contact")} className="flex-1 bg-[#1B6B3A] text-white text-sm font-semibold py-3 rounded-xl hover:bg-[#155a30] transition-all flex items-center justify-center gap-2 shadow-md shadow-[#1B6B3A]/20">
+                <button onClick={() => setPage("contact")} className="flex-1 bg-[#69b400] text-white text-sm font-semibold py-3 rounded-xl hover:bg-[#558b2f] transition-all flex items-center justify-center gap-2 shadow-md shadow-[#69b400]/20">
                   <MessageSquare size={14} /> {t.requestQuote}
                 </button>
-                <button onClick={() => { setSelectedProduct(featured[carouselIdx]); setPage("product-detail"); }} className="flex-1 border-2 border-gray-200 text-[#1A1F2E] text-sm font-semibold py-3 rounded-xl hover:border-[#1B6B3A] hover:text-[#1B6B3A] transition-all flex items-center justify-center gap-2">
+                <button onClick={() => { setSelectedProduct(featured[carouselIdx]); setPage("product-detail"); }} className="flex-1 border-2 border-gray-200 text-[#1e293b] text-sm font-semibold py-3 rounded-xl hover:border-[#69b400] hover:text-[#69b400] transition-all flex items-center justify-center gap-2">
                   <FileText size={14} /> {t.viewDetails}
                 </button>
               </div>
@@ -790,15 +790,15 @@ function HomePage({ setPage, setSelectedProduct, t, lang }: { setPage: (p: Page)
         </div>
 
         <div className="flex items-center justify-center gap-2.5">
-          <button onClick={() => setCarouselIdx(i => (i - 1 + featured.length) % featured.length)} className="p-2 rounded-full border border-gray-200 hover:border-[#1B6B3A] hover:text-[#1B6B3A] transition-all"><ChevronLeft size={14} /></button>
+          <button onClick={() => setCarouselIdx(i => (i - 1 + featured.length) % featured.length)} className="p-2 rounded-full border border-gray-200 hover:border-[#69b400] hover:text-[#69b400] transition-all"><ChevronLeft size={14} /></button>
           {featured.map((_, i) => (
-            <button key={i} onClick={() => setCarouselIdx(i)} className={`h-2 rounded-full transition-all duration-300 ${i === carouselIdx ? "bg-[#1B6B3A] w-7" : "bg-gray-300 w-2 hover:bg-gray-400"}`} />
+            <button key={i} onClick={() => setCarouselIdx(i)} className={`h-2 rounded-full transition-all duration-300 ${i === carouselIdx ? "bg-[#69b400] w-7" : "bg-gray-300 w-2 hover:bg-gray-400"}`} />
           ))}
-          <button onClick={() => setCarouselIdx(i => (i + 1) % featured.length)} className="p-2 rounded-full border border-gray-200 hover:border-[#1B6B3A] hover:text-[#1B6B3A] transition-all"><ChevronRight size={14} /></button>
+          <button onClick={() => setCarouselIdx(i => (i + 1) % featured.length)} className="p-2 rounded-full border border-gray-200 hover:border-[#69b400] hover:text-[#69b400] transition-all"><ChevronRight size={14} /></button>
         </div>
 
         <div className="sm:hidden text-center mt-5">
-          <button onClick={() => setPage("products")} className="text-sm text-[#1B6B3A] font-semibold flex items-center gap-1 mx-auto">{t.viewAllProducts} <ArrowRight size={14} /></button>
+          <button onClick={() => setPage("products")} className="text-sm text-[#69b400] font-semibold flex items-center gap-1 mx-auto">{t.viewAllProducts} <ArrowRight size={14} /></button>
         </div>
       </section>
 
@@ -808,7 +808,7 @@ function HomePage({ setPage, setSelectedProduct, t, lang }: { setPage: (p: Page)
           {PRODUCTS.slice(0, 8).map(p => <ProductCard key={p.id} product={p} setPage={setPage} setSelectedProduct={setSelectedProduct} t={t} />)}
         </div>
         <div className="text-center mt-8">
-          <button onClick={() => setPage("products")} className="inline-flex items-center gap-2 border-2 border-[#1B6B3A] text-[#1B6B3A] font-semibold px-8 py-3.5 rounded-xl hover:bg-[#1B6B3A] hover:text-white transition-all shadow-sm">
+          <button onClick={() => setPage("products")} className="inline-flex items-center gap-2 border-2 border-[#69b400] text-[#69b400] font-semibold px-8 py-3.5 rounded-xl hover:bg-[#69b400] hover:text-white transition-all shadow-sm">
             {t.browseCatalog} <ArrowRight size={16} />
           </button>
         </div>
@@ -820,7 +820,7 @@ function HomePage({ setPage, setSelectedProduct, t, lang }: { setPage: (p: Page)
           <SectionLabel>{t.brandPartners}</SectionLabel>
           <div className="flex flex-wrap gap-4 sm:gap-8 mt-2">
             {BRANDS.map(b => (
-              <div key={b} className="font-['Barlow_Condensed'] font-bold text-base sm:text-lg text-gray-300 hover:text-[#1B6B3A] transition-colors cursor-pointer">{b}</div>
+              <div key={b} className="font-['Barlow_Condensed'] font-bold text-base sm:text-lg text-gray-300 hover:text-[#69b400] transition-colors cursor-pointer">{b}</div>
             ))}
           </div>
         </div>
@@ -830,18 +830,18 @@ function HomePage({ setPage, setSelectedProduct, t, lang }: { setPage: (p: Page)
       <section className="py-12 sm:py-16 px-4 sm:px-6 max-w-7xl mx-auto">
         <div className="text-center mb-8 sm:mb-10">
           <SectionLabel>After-Sales Support</SectionLabel>
-          <h2 className="font-['Barlow_Condensed'] text-3xl sm:text-4xl font-bold text-[#1A1F2E]">{t.technicalServices}</h2>
+          <h2 className="font-['Barlow_Condensed'] text-3xl sm:text-4xl font-bold text-[#1e293b]">{t.technicalServices}</h2>
           <p className="text-[#5A6478] mt-3 max-w-lg mx-auto text-sm">{t.servicesSubtitle}</p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {SERVICES.map(s => (
-            <div key={s.title} className="bg-white border border-gray-100 rounded-2xl p-5 sm:p-6 hover:shadow-xl hover:shadow-[#1B6B3A]/8 hover:border-[#1B6B3A]/20 transition-all duration-300 group">
-              <div className="w-11 h-11 bg-[#E8F2ED] rounded-xl flex items-center justify-center mb-4 group-hover:bg-[#1B6B3A] transition-colors duration-300">
-                <s.icon size={20} className="text-[#1B6B3A] group-hover:text-white transition-colors duration-300" />
+            <div key={s.title} className="bg-white border border-gray-100 rounded-2xl p-5 sm:p-6 hover:shadow-xl hover:shadow-[#69b400]/8 hover:border-[#69b400]/20 transition-all duration-300 group">
+              <div className="w-11 h-11 bg-[#f0f9e8] rounded-xl flex items-center justify-center mb-4 group-hover:bg-[#69b400] transition-colors duration-300">
+                <s.icon size={20} className="text-[#69b400] group-hover:text-white transition-colors duration-300" />
               </div>
-              <h3 className="font-semibold text-[#1A1F2E] mb-2">{s.title}</h3>
+              <h3 className="font-semibold text-[#1e293b] mb-2">{s.title}</h3>
               <p className="text-[#5A6478] text-sm leading-relaxed line-clamp-3">{s.description}</p>
-              <button onClick={() => setPage("services")} className="mt-4 text-xs text-[#1B6B3A] font-semibold flex items-center gap-1 hover:gap-2 transition-all">
+              <button onClick={() => setPage("services")} className="mt-4 text-xs text-[#69b400] font-semibold flex items-center gap-1 hover:gap-2 transition-all">
                 {t.learnMore} <ArrowRight size={12} />
               </button>
             </div>
@@ -850,7 +850,7 @@ function HomePage({ setPage, setSelectedProduct, t, lang }: { setPage: (p: Page)
       </section>
 
       {/* ── Testimonials ── */}
-      <section className="bg-[#0F1520] py-14 sm:py-20 px-4 sm:px-6">
+      <section className="bg-[#0f172a] py-14 sm:py-20 px-4 sm:px-6">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-10 sm:mb-12">
             <SectionLabel light>Client Testimonials</SectionLabel>
@@ -859,12 +859,12 @@ function HomePage({ setPage, setSelectedProduct, t, lang }: { setPage: (p: Page)
           <div className="grid sm:grid-cols-3 gap-4 sm:gap-6">
             {TESTIMONIALS.map((t2, i) => (
               <div key={i} onClick={() => setTestimIdx(i)}
-                className={`bg-white/5 border rounded-2xl p-5 sm:p-6 cursor-pointer transition-all duration-300 ${testimIdx === i ? "border-[#1B6B3A] bg-white/10 shadow-lg shadow-[#1B6B3A]/20" : "border-white/10 hover:border-white/20"}`}>
-                <Quote size={24} className={`mb-3 ${testimIdx === i ? "text-[#4ade80]" : "text-white/20"}`} />
+                className={`bg-white/5 border rounded-2xl p-5 sm:p-6 cursor-pointer transition-all duration-300 ${testimIdx === i ? "border-[#69b400] bg-white/10 shadow-lg shadow-[#69b400]/20" : "border-white/10 hover:border-white/20"}`}>
+                <Quote size={24} className={`mb-3 ${testimIdx === i ? "text-[#9ccc65]" : "text-white/20"}`} />
                 <p className="text-gray-300 text-sm leading-relaxed mb-4 italic">"{t2.quote}"</p>
                 <div className="flex items-center gap-2.5">
-                  <div className="w-8 h-8 bg-[#1B6B3A]/30 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-[#4ade80] font-bold text-xs">{t2.author[0]}</span>
+                  <div className="w-8 h-8 bg-[#69b400]/30 rounded-full flex items-center justify-center flex-shrink-0">
+                    <span className="text-[#9ccc65] font-bold text-xs">{t2.author[0]}</span>
                   </div>
                   <div>
                     <p className="text-white font-semibold text-xs">{t2.author}</p>
@@ -878,13 +878,13 @@ function HomePage({ setPage, setSelectedProduct, t, lang }: { setPage: (p: Page)
       </section>
 
       {/* ── CTA Banner ── */}
-      <section className="relative bg-gradient-to-br from-[#1B6B3A] to-[#0f4523] py-14 sm:py-16 px-4 sm:px-6 overflow-hidden">
+      <section className="relative bg-gradient-to-br from-[#69b400] to-[#0f4523] py-14 sm:py-16 px-4 sm:px-6 overflow-hidden">
         <div className="absolute inset-0 opacity-[0.05]" style={{ backgroundImage: "radial-gradient(circle, #fff 1px, transparent 1px)", backgroundSize: "24px 24px" }} />
         <div className="relative max-w-4xl mx-auto text-center">
           <h2 className="font-['Barlow_Condensed'] text-3xl sm:text-5xl font-bold text-white mb-3">{t.readyToEquip}</h2>
           <p className="text-green-200 text-sm sm:text-base mb-8">{t.readySubtitle}</p>
           <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
-            <button onClick={() => setPage("contact")} className="bg-white text-[#1B6B3A] font-semibold px-7 py-3.5 rounded-xl hover:bg-green-50 transition-all flex items-center justify-center gap-2 shadow-xl">
+            <button onClick={() => setPage("contact")} className="bg-white text-[#69b400] font-semibold px-7 py-3.5 rounded-xl hover:bg-green-50 transition-all flex items-center justify-center gap-2 shadow-xl">
               <PhoneCall size={16} /> {t.requestConsultation}
             </button>
             <button onClick={() => setPage("products")} className="border-2 border-white/60 text-white font-semibold px-7 py-3.5 rounded-xl hover:bg-white/10 transition-all flex items-center justify-center gap-2">
@@ -921,8 +921,8 @@ function ProductsPage({ setPage, setSelectedProduct, t }: { setPage: (p: Page) =
   const FiltersContent = () => (
     <div className="space-y-5">
       <div className="flex items-center justify-between">
-        <span className="text-sm font-bold text-[#1A1F2E] flex items-center gap-2"><Filter size={14} /> {t.filters}</span>
-        {activeFiltersCount > 0 && <button onClick={clearFilters} className="text-xs font-semibold text-[#1B6B3A] hover:underline">{t.clearFilters}</button>}
+        <span className="text-sm font-bold text-[#1e293b] flex items-center gap-2"><Filter size={14} /> {t.filters}</span>
+        {activeFiltersCount > 0 && <button onClick={clearFilters} className="text-xs font-semibold text-[#69b400] hover:underline">{t.clearFilters}</button>}
       </div>
 
       {[{ label: t.brand, value: brand, setter: setBrand, opts: BRANDS },
@@ -931,7 +931,7 @@ function ProductsPage({ setPage, setSelectedProduct, t }: { setPage: (p: Page) =
         <div key={f.label}>
           <p className="text-[10px] font-bold tracking-widest uppercase text-[#5A6478] mb-2">{f.label}</p>
           <select value={f.value} onChange={e => f.setter(e.target.value)}
-            className="w-full text-sm border border-gray-200 rounded-xl px-3 py-2.5 focus:outline-none focus:border-[#1B6B3A] bg-white">
+            className="w-full text-sm border border-gray-200 rounded-xl px-3 py-2.5 focus:outline-none focus:border-[#69b400] bg-white">
             <option value="">All</option>
             {f.opts.map(o => <option key={o}>{o}</option>)}
           </select>
@@ -942,20 +942,20 @@ function ProductsPage({ setPage, setSelectedProduct, t }: { setPage: (p: Page) =
         <p className="text-[10px] font-bold tracking-widest uppercase text-[#5A6478] mb-2">{t.availability}</p>
         <div className="space-y-2">
           {["Featured", "Best Seller", "New"].map(tg => (
-            <label key={tg} className={`flex items-center gap-2.5 text-sm cursor-pointer px-3 py-2.5 rounded-xl transition-all ${tag === tg ? "bg-[#E8F2ED] text-[#1B6B3A] font-medium" : "hover:bg-gray-50"}`}>
-              <input type="radio" name="tag" value={tg} checked={tag === tg} onChange={e => setTag(e.target.value)} className="accent-[#1B6B3A]" /> {tg}
+            <label key={tg} className={`flex items-center gap-2.5 text-sm cursor-pointer px-3 py-2.5 rounded-xl transition-all ${tag === tg ? "bg-[#f0f9e8] text-[#69b400] font-medium" : "hover:bg-gray-50"}`}>
+              <input type="radio" name="tag" value={tg} checked={tag === tg} onChange={e => setTag(e.target.value)} className="accent-[#69b400]" /> {tg}
             </label>
           ))}
-          <label className={`flex items-center gap-2.5 text-sm cursor-pointer px-3 py-2.5 rounded-xl transition-all ${tag === "" ? "bg-[#E8F2ED] text-[#1B6B3A] font-medium" : "hover:bg-gray-50"}`}>
-            <input type="radio" name="tag" value="" checked={tag === ""} onChange={() => setTag("")} className="accent-[#1B6B3A]" /> All
+          <label className={`flex items-center gap-2.5 text-sm cursor-pointer px-3 py-2.5 rounded-xl transition-all ${tag === "" ? "bg-[#f0f9e8] text-[#69b400] font-medium" : "hover:bg-gray-50"}`}>
+            <input type="radio" name="tag" value="" checked={tag === ""} onChange={() => setTag("")} className="accent-[#69b400]" /> All
           </label>
         </div>
       </div>
 
-      <div className="bg-gradient-to-br from-[#1B6B3A] to-[#155a30] rounded-2xl p-4 text-white">
+      <div className="bg-gradient-to-br from-[#69b400] to-[#558b2f] rounded-2xl p-4 text-white">
         <h4 className="font-semibold text-sm mb-1.5">{t.needHelp}</h4>
         <p className="text-green-200 text-xs mb-3 leading-relaxed">{t.needHelpSub}</p>
-        <button onClick={() => setPage("contact")} className="bg-white text-[#1B6B3A] font-bold text-xs w-full py-2.5 rounded-xl hover:bg-green-50 transition-all">{t.contactSales}</button>
+        <button onClick={() => setPage("contact")} className="bg-white text-[#69b400] font-bold text-xs w-full py-2.5 rounded-xl hover:bg-green-50 transition-all">{t.contactSales}</button>
       </div>
     </div>
   );
@@ -965,7 +965,7 @@ function ProductsPage({ setPage, setSelectedProduct, t }: { setPage: (p: Page) =
       {/* Header */}
       <div className="mb-5 sm:mb-6">
         <SectionLabel>Product Catalog</SectionLabel>
-        <h1 className="font-['Barlow_Condensed'] text-3xl sm:text-4xl font-bold text-[#1A1F2E]">{t.allProducts}</h1>
+        <h1 className="font-['Barlow_Condensed'] text-3xl sm:text-4xl font-bold text-[#1e293b]">{t.allProducts}</h1>
       </div>
 
       {/* Search + toolbar */}
@@ -973,18 +973,18 @@ function ProductsPage({ setPage, setSelectedProduct, t }: { setPage: (p: Page) =
         <div className="relative flex-1">
           <Search size={15} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
           <input value={search} onChange={e => setSearch(e.target.value)} placeholder={t.searchPlaceholder}
-            className="w-full pl-11 pr-4 py-3 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-[#1B6B3A] focus:ring-2 focus:ring-[#1B6B3A]/10 shadow-sm" />
+            className="w-full pl-11 pr-4 py-3 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-[#69b400] focus:ring-2 focus:ring-[#69b400]/10 shadow-sm" />
         </div>
         {/* Mobile filter btn */}
         <button onClick={() => setFilterDrawerOpen(true)}
-          className="md:hidden flex items-center gap-2 px-4 py-3 bg-white border border-gray-200 rounded-xl text-sm font-semibold text-[#1A1F2E] shadow-sm relative">
+          className="md:hidden flex items-center gap-2 px-4 py-3 bg-white border border-gray-200 rounded-xl text-sm font-semibold text-[#1e293b] shadow-sm relative">
           <Filter size={15} />
-          {activeFiltersCount > 0 && <span className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-[#1B6B3A] text-white text-[10px] font-bold rounded-full flex items-center justify-center">{activeFiltersCount}</span>}
+          {activeFiltersCount > 0 && <span className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-[#69b400] text-white text-[10px] font-bold rounded-full flex items-center justify-center">{activeFiltersCount}</span>}
         </button>
         <div className="hidden sm:flex gap-1">
-          <button onClick={() => setSidebarOpen(!sidebarOpen)} className={`p-3 rounded-xl border transition-all ${sidebarOpen ? "border-[#1B6B3A] bg-[#E8F2ED] text-[#1B6B3A]" : "border-gray-200 text-gray-500 hover:border-[#1B6B3A]"}`}><SlidersHorizontal size={15} /></button>
-          <button onClick={() => setViewMode("grid")} className={`p-3 rounded-xl border transition-all ${viewMode === "grid" ? "bg-[#1B6B3A] text-white border-[#1B6B3A]" : "border-gray-200 text-gray-500 hover:border-[#1B6B3A]"}`}><Grid3X3 size={15} /></button>
-          <button onClick={() => setViewMode("list")} className={`p-3 rounded-xl border transition-all ${viewMode === "list" ? "bg-[#1B6B3A] text-white border-[#1B6B3A]" : "border-gray-200 text-gray-500 hover:border-[#1B6B3A]"}`}><List size={15} /></button>
+          <button onClick={() => setSidebarOpen(!sidebarOpen)} className={`p-3 rounded-xl border transition-all ${sidebarOpen ? "border-[#69b400] bg-[#f0f9e8] text-[#69b400]" : "border-gray-200 text-gray-500 hover:border-[#69b400]"}`}><SlidersHorizontal size={15} /></button>
+          <button onClick={() => setViewMode("grid")} className={`p-3 rounded-xl border transition-all ${viewMode === "grid" ? "bg-[#69b400] text-white border-[#69b400]" : "border-gray-200 text-gray-500 hover:border-[#69b400]"}`}><Grid3X3 size={15} /></button>
+          <button onClick={() => setViewMode("list")} className={`p-3 rounded-xl border transition-all ${viewMode === "list" ? "bg-[#69b400] text-white border-[#69b400]" : "border-gray-200 text-gray-500 hover:border-[#69b400]"}`}><List size={15} /></button>
         </div>
       </div>
 
@@ -992,9 +992,9 @@ function ProductsPage({ setPage, setSelectedProduct, t }: { setPage: (p: Page) =
       {activeFiltersCount > 0 && (
         <div className="flex flex-wrap gap-2 mb-4">
           {[brand, category, type, tag].filter(Boolean).map(f => (
-            <span key={f} className="bg-[#E8F2ED] text-[#1B6B3A] text-xs font-semibold px-3 py-1.5 rounded-full flex items-center gap-1.5">
+            <span key={f} className="bg-[#f0f9e8] text-[#69b400] text-xs font-semibold px-3 py-1.5 rounded-full flex items-center gap-1.5">
               {f}
-              <button onClick={() => { if (f === brand) setBrand(""); if (f === category) setCategory(""); if (f === type) setType(""); if (f === tag) setTag(""); }} className="hover:bg-[#1B6B3A]/10 rounded-full p-0.5"><X size={11} /></button>
+              <button onClick={() => { if (f === brand) setBrand(""); if (f === category) setCategory(""); if (f === type) setType(""); if (f === tag) setTag(""); }} className="hover:bg-[#69b400]/10 rounded-full p-0.5"><X size={11} /></button>
             </span>
           ))}
         </div>
@@ -1015,7 +1015,7 @@ function ProductsPage({ setPage, setSelectedProduct, t }: { setPage: (p: Page) =
           {filtered.length === 0 ? (
             <div className="text-center py-20 bg-white rounded-2xl border border-gray-100">
               <Search size={40} className="mx-auto mb-3 text-gray-300" />
-              <p className="font-semibold text-[#1A1F2E]">{t.noProducts}</p>
+              <p className="font-semibold text-[#1e293b]">{t.noProducts}</p>
               <p className="text-sm text-[#5A6478] mt-1">{t.noProductsSub}</p>
             </div>
           ) : viewMode === "grid" ? (
@@ -1026,17 +1026,17 @@ function ProductsPage({ setPage, setSelectedProduct, t }: { setPage: (p: Page) =
             <div className="space-y-3">
               {filtered.map(p => (
                 <div key={p.id} onClick={() => { setSelectedProduct(p); setPage("product-detail"); }}
-                  className="bg-white border border-gray-100 rounded-2xl p-4 flex gap-4 hover:shadow-lg hover:border-[#1B6B3A]/20 transition-all cursor-pointer">
+                  className="bg-white border border-gray-100 rounded-2xl p-4 flex gap-4 hover:shadow-lg hover:border-[#69b400]/20 transition-all cursor-pointer">
                   <img src={p.image} alt={p.name} className="w-20 h-16 sm:w-24 sm:h-20 object-cover rounded-xl bg-gray-50 flex-shrink-0" />
                   <div className="flex-1 min-w-0">
-                    <p className="text-[10px] font-bold tracking-widest uppercase text-[#1B6B3A]">{p.brand}</p>
-                    <h3 className="font-semibold text-[#1A1F2E] mt-0.5 mb-1 text-sm leading-snug">{p.name}</h3>
+                    <p className="text-[10px] font-bold tracking-widest uppercase text-[#69b400]">{p.brand}</p>
+                    <h3 className="font-semibold text-[#1e293b] mt-0.5 mb-1 text-sm leading-snug">{p.name}</h3>
                     <p className="text-[#5A6478] text-xs leading-relaxed line-clamp-2 hidden sm:block">{p.description}</p>
                   </div>
                   <div className="flex-shrink-0 flex flex-col gap-2">
                     {p.tag && <TagBadge tag={p.tag} />}
-                    <button onClick={e => { e.stopPropagation(); setPage("contact"); }} className="text-xs bg-[#1B6B3A] text-white px-3 py-2 rounded-lg hover:bg-[#155a30] transition-all whitespace-nowrap font-semibold">{t.requestQuote}</button>
-                    <button onClick={e => e.stopPropagation()} className="text-xs border border-gray-200 text-[#5A6478] px-3 py-2 rounded-lg hover:border-[#1B6B3A] transition-all flex items-center gap-1 justify-center"><Download size={11} /> Sheet</button>
+                    <button onClick={e => { e.stopPropagation(); setPage("contact"); }} className="text-xs bg-[#69b400] text-white px-3 py-2 rounded-lg hover:bg-[#558b2f] transition-all whitespace-nowrap font-semibold">{t.requestQuote}</button>
+                    <button onClick={e => e.stopPropagation()} className="text-xs border border-gray-200 text-[#5A6478] px-3 py-2 rounded-lg hover:border-[#69b400] transition-all flex items-center gap-1 justify-center"><Download size={11} /> Sheet</button>
                   </div>
                 </div>
               ))}
@@ -1052,11 +1052,11 @@ function ProductsPage({ setPage, setSelectedProduct, t }: { setPage: (p: Page) =
           <div className="relative bg-white w-full rounded-t-2xl p-5 shadow-2xl max-h-[85vh] overflow-y-auto" onClick={e => e.stopPropagation()}>
             <div className="w-10 h-1 bg-gray-200 rounded-full mx-auto mb-5" />
             <div className="flex items-center justify-between mb-5">
-              <h3 className="font-['Barlow_Condensed'] text-xl font-bold text-[#1A1F2E]">{t.filters}</h3>
+              <h3 className="font-['Barlow_Condensed'] text-xl font-bold text-[#1e293b]">{t.filters}</h3>
               <button onClick={() => setFilterDrawerOpen(false)} className="p-1.5 rounded-lg hover:bg-gray-100"><X size={18} /></button>
             </div>
             <FiltersContent />
-            <button onClick={() => setFilterDrawerOpen(false)} className="w-full mt-5 bg-[#1B6B3A] text-white font-bold py-3.5 rounded-xl hover:bg-[#155a30] transition-all shadow-lg shadow-[#1B6B3A]/20">
+            <button onClick={() => setFilterDrawerOpen(false)} className="w-full mt-5 bg-[#69b400] text-white font-bold py-3.5 rounded-xl hover:bg-[#558b2f] transition-all shadow-lg shadow-[#69b400]/20">
               Show {filtered.length} {t.productsFound}
             </button>
           </div>
@@ -1071,7 +1071,7 @@ function ProductDetailPage({ product, setPage, t }: { product: Product; setPage:
   const [activeImg, setActiveImg] = useState(0);
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
-      <button onClick={() => setPage("products")} className="flex items-center gap-2 text-sm text-[#5A6478] hover:text-[#1B6B3A] mb-5 sm:mb-6 transition-colors font-medium">
+      <button onClick={() => setPage("products")} className="flex items-center gap-2 text-sm text-[#5A6478] hover:text-[#69b400] mb-5 sm:mb-6 transition-colors font-medium">
         <ChevronLeft size={16} /> {t.backToProducts}
       </button>
       <div className="grid md:grid-cols-2 gap-8 sm:gap-10">
@@ -1081,7 +1081,7 @@ function ProductDetailPage({ product, setPage, t }: { product: Product; setPage:
           </div>
           <div className="grid grid-cols-3 gap-2">
             {[0, 1, 2].map(i => (
-              <button key={i} onClick={() => setActiveImg(i)} className={`overflow-hidden rounded-xl border-2 transition-all ${activeImg === i ? "border-[#1B6B3A]" : "border-transparent hover:border-gray-300"}`}>
+              <button key={i} onClick={() => setActiveImg(i)} className={`overflow-hidden rounded-xl border-2 transition-all ${activeImg === i ? "border-[#69b400]" : "border-transparent hover:border-gray-300"}`}>
                 <img src={product.image} alt="" className="w-full h-16 sm:h-20 object-cover" />
               </button>
             ))}
@@ -1089,40 +1089,40 @@ function ProductDetailPage({ product, setPage, t }: { product: Product; setPage:
         </div>
         <div>
           {product.tag && <div className="mb-3"><TagBadge tag={product.tag} /></div>}
-          <p className="text-[11px] font-bold tracking-[0.15em] uppercase text-[#1B6B3A] mb-2">{product.brand}</p>
-          <h1 className="font-['Barlow_Condensed'] text-3xl sm:text-4xl font-bold text-[#1A1F2E] mb-4 leading-tight">{product.name}</h1>
+          <p className="text-[11px] font-bold tracking-[0.15em] uppercase text-[#69b400] mb-2">{product.brand}</p>
+          <h1 className="font-['Barlow_Condensed'] text-3xl sm:text-4xl font-bold text-[#1e293b] mb-4 leading-tight">{product.name}</h1>
           <p className="text-[#5A6478] leading-relaxed mb-6 text-sm sm:text-base">{product.description}</p>
 
           <div className="bg-[#F4F6F8] rounded-2xl p-4 sm:p-5 mb-6">
-            <h3 className="font-bold text-[#1A1F2E] text-sm mb-3 flex items-center gap-2"><Gauge size={14} /> {t.technicalSpecs}</h3>
+            <h3 className="font-bold text-[#1e293b] text-sm mb-3 flex items-center gap-2"><Gauge size={14} /> {t.technicalSpecs}</h3>
             <div className="grid grid-cols-2 gap-2.5">
               {Object.entries(product.specs).map(([k, v]) => (
                 <div key={k} className="bg-white rounded-xl p-3 border border-gray-100">
                   <div className="text-[9px] text-[#5A6478] uppercase tracking-wider font-semibold mb-1">{k}</div>
-                  <div className="text-sm font-bold text-[#1A1F2E] font-['JetBrains_Mono']">{v}</div>
+                  <div className="text-sm font-bold text-[#1e293b] font-['JetBrains_Mono']">{v}</div>
                 </div>
               ))}
             </div>
           </div>
 
           <div className="grid grid-cols-2 gap-2.5 mb-3">
-            <button onClick={() => setPage("contact")} className="bg-[#1B6B3A] text-white font-bold py-3.5 rounded-xl hover:bg-[#155a30] transition-all flex items-center justify-center gap-2 shadow-lg shadow-[#1B6B3A]/20">
+            <button onClick={() => setPage("contact")} className="bg-[#69b400] text-white font-bold py-3.5 rounded-xl hover:bg-[#558b2f] transition-all flex items-center justify-center gap-2 shadow-lg shadow-[#69b400]/20">
               <MessageSquare size={15} /> {t.requestQuote}
             </button>
-            <button onClick={() => setPage("contact")} className="border-2 border-[#1B6B3A] text-[#1B6B3A] font-bold py-3.5 rounded-xl hover:bg-[#E8F2ED] transition-all flex items-center justify-center gap-2">
+            <button onClick={() => setPage("contact")} className="border-2 border-[#69b400] text-[#69b400] font-bold py-3.5 rounded-xl hover:bg-[#f0f9e8] transition-all flex items-center justify-center gap-2">
               <PhoneCall size={15} /> {t.contactSales}
             </button>
           </div>
           <div className="grid grid-cols-2 gap-2.5 mb-6">
             {[{ icon: Download, label: t.downloadDatasheet }, { icon: FileText, label: t.productBrochure }].map(btn => (
-              <button key={btn.label} className="border border-gray-200 text-[#5A6478] font-medium py-3 rounded-xl hover:border-[#1B6B3A] hover:text-[#1B6B3A] transition-all flex items-center justify-center gap-2 text-sm">
+              <button key={btn.label} className="border border-gray-200 text-[#5A6478] font-medium py-3 rounded-xl hover:border-[#69b400] hover:text-[#69b400] transition-all flex items-center justify-center gap-2 text-sm">
                 <btn.icon size={14} /> <span className="truncate">{btn.label}</span>
               </button>
             ))}
           </div>
           <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-xs text-[#5A6478] pt-4 border-t border-gray-100">
             {[{ icon: Shield, text: "Genuine Products" }, { icon: Award, text: "ISO Certified" }, { icon: Wrench, text: "After-sales Support" }].map(b => (
-              <span key={b.text} className="flex items-center gap-1.5"><b.icon size={12} className="text-[#1B6B3A]" /> {b.text}</span>
+              <span key={b.text} className="flex items-center gap-1.5"><b.icon size={12} className="text-[#69b400]" /> {b.text}</span>
             ))}
           </div>
         </div>
@@ -1144,15 +1144,15 @@ function ServicesPage({ setPage, t }: { setPage: (p: Page) => void; t: typeof T[
     try {
       await submitServiceRequest({ ...svcForm });
       setSvcState("success");
-    } catch (err: any) {
-      setSvcError(err.message ?? "Submission failed. Please try again.");
+    } catch (err) {
+      setSvcError(err instanceof Error ? err.message : "Submission failed. Please try again.");
       setSvcState("error");
     }
   }
 
   return (
     <div>
-      <div className="relative bg-[#0F1520] py-14 sm:py-20 px-4 sm:px-6 overflow-hidden">
+      <div className="relative bg-[#0f172a] py-14 sm:py-20 px-4 sm:px-6 overflow-hidden">
         <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: "radial-gradient(circle, #fff 1px, transparent 1px)", backgroundSize: "28px 28px" }} />
         <div className="relative max-w-4xl mx-auto text-center">
           <SectionLabel light>After-Sales Support</SectionLabel>
@@ -1166,9 +1166,9 @@ function ServicesPage({ setPage, t }: { setPage: (p: Page) => void; t: typeof T[
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8 sm:mb-10">
           {SERVICES.map((s, i) => (
             <button key={s.title} onClick={() => setActive(i)}
-              className={`p-4 rounded-2xl border-2 text-left transition-all ${active === i ? "border-[#1B6B3A] bg-[#E8F2ED] shadow-md shadow-[#1B6B3A]/10" : "border-gray-100 bg-white hover:border-[#1B6B3A]/30"}`}>
-              <s.icon size={20} className={`${active === i ? "text-[#1B6B3A]" : "text-gray-400"} mb-2`} />
-              <p className={`font-semibold text-sm leading-tight ${active === i ? "text-[#1B6B3A]" : "text-[#1A1F2E]"}`}>{s.title}</p>
+              className={`p-4 rounded-2xl border-2 text-left transition-all ${active === i ? "border-[#69b400] bg-[#f0f9e8] shadow-md shadow-[#69b400]/10" : "border-gray-100 bg-white hover:border-[#69b400]/30"}`}>
+              <s.icon size={20} className={`${active === i ? "text-[#69b400]" : "text-gray-400"} mb-2`} />
+              <p className={`font-semibold text-sm leading-tight ${active === i ? "text-[#69b400]" : "text-[#1e293b]"}`}>{s.title}</p>
             </button>
           ))}
         </div>
@@ -1176,19 +1176,19 @@ function ServicesPage({ setPage, t }: { setPage: (p: Page) => void; t: typeof T[
         <div className="grid md:grid-cols-2 gap-6 bg-white rounded-3xl border border-gray-100 overflow-hidden shadow-xl shadow-black/5">
           <img src={SERVICES[active].image} alt={SERVICES[active].title} className="w-full h-56 sm:h-72 md:h-full object-cover" />
           <div className="p-6 sm:p-8 flex flex-col justify-center">
-            <div className="w-12 h-12 bg-[#E8F2ED] rounded-xl flex items-center justify-center mb-5">
-              {(() => { const Icon = SERVICES[active].icon; return <Icon size={22} className="text-[#1B6B3A]" />; })()}
+            <div className="w-12 h-12 bg-[#f0f9e8] rounded-xl flex items-center justify-center mb-5">
+              {(() => { const Icon = SERVICES[active].icon; return <Icon size={22} className="text-[#69b400]" />; })()}
             </div>
-            <h2 className="font-['Barlow_Condensed'] text-2xl sm:text-3xl font-bold text-[#1A1F2E] mb-3">{SERVICES[active].title}</h2>
+            <h2 className="font-['Barlow_Condensed'] text-2xl sm:text-3xl font-bold text-[#1e293b] mb-3">{SERVICES[active].title}</h2>
             <p className="text-[#5A6478] leading-relaxed mb-5 sm:mb-6 text-sm">{SERVICES[active].description}</p>
             <div className="space-y-2.5 mb-6">
               {["ISO 17025 accredited procedures", "Traceable to national standards", "Certified technicians", "Documentation and certification provided"].map(f => (
-                <div key={f} className="flex items-center gap-2.5 text-sm text-[#1A1F2E]">
-                  <CheckCircle size={14} className="text-[#1B6B3A] flex-shrink-0" /> {f}
+                <div key={f} className="flex items-center gap-2.5 text-sm text-[#1e293b]">
+                  <CheckCircle size={14} className="text-[#69b400] flex-shrink-0" /> {f}
                 </div>
               ))}
             </div>
-            <button onClick={() => setPage("contact")} className="w-full bg-[#1B6B3A] text-white font-bold py-3.5 rounded-xl hover:bg-[#155a30] transition-all flex items-center justify-center gap-2 shadow-lg shadow-[#1B6B3A]/20">
+            <button onClick={() => setPage("contact")} className="w-full bg-[#69b400] text-white font-bold py-3.5 rounded-xl hover:bg-[#558b2f] transition-all flex items-center justify-center gap-2 shadow-lg shadow-[#69b400]/20">
               <MessageSquare size={15} /> {t.requestService}
             </button>
           </div>
@@ -1199,14 +1199,14 @@ function ServicesPage({ setPage, t }: { setPage: (p: Page) => void; t: typeof T[
       <div className="bg-gradient-to-b from-[#F4F6F8] to-white py-12 sm:py-16 px-4 sm:px-6">
         <div className="max-w-lg mx-auto bg-white rounded-3xl border border-gray-100 p-6 sm:p-8 shadow-xl shadow-black/5">
           <SectionLabel>{t.requestAService}</SectionLabel>
-          <h3 className="font-['Barlow_Condensed'] text-2xl sm:text-3xl font-bold text-[#1A1F2E] mb-1">{t.requestAService}</h3>
+          <h3 className="font-['Barlow_Condensed'] text-2xl sm:text-3xl font-bold text-[#1e293b] mb-1">{t.requestAService}</h3>
           <p className="text-[#5A6478] text-sm mb-6">{t.formSubtitle}</p>
           {svcState === "success" ? (
             <div className="text-center py-10">
-              <div className="w-16 h-16 bg-[#E8F2ED] rounded-full flex items-center justify-center mx-auto mb-4"><CheckCircle size={32} className="text-[#1B6B3A]" /></div>
-              <p className="font-bold text-[#1A1F2E] text-lg">Request Submitted!</p>
+              <div className="w-16 h-16 bg-[#f0f9e8] rounded-full flex items-center justify-center mx-auto mb-4"><CheckCircle size={32} className="text-[#69b400]" /></div>
+              <p className="font-bold text-[#1e293b] text-lg">Request Submitted!</p>
               <p className="text-[#5A6478] text-sm mt-1">Our team will contact you within 24 hours.</p>
-              <button onClick={() => setSvcState("idle")} className="mt-4 text-sm text-[#1B6B3A] font-semibold hover:underline">Submit another</button>
+              <button onClick={() => setSvcState("idle")} className="mt-4 text-sm text-[#69b400] font-semibold hover:underline">Submit another</button>
             </div>
           ) : (
             <form onSubmit={handleServiceSubmit} className="space-y-4">
@@ -1214,18 +1214,18 @@ function ServicesPage({ setPage, t }: { setPage: (p: Page) => void; t: typeof T[
               <FormInput label="Company Name" placeholder="Your company" value={svcForm.company} onChange={e => setSvcForm(p => ({ ...p, company: e.target.value }))} />
               <FormInput label="Email Address" required type="email" placeholder="your@email.com" value={svcForm.email} onChange={e => setSvcForm(p => ({ ...p, email: e.target.value }))} />
               <div>
-                <label className="text-xs font-semibold text-[#1A1F2E] block mb-1.5">Service Type<span className="text-[#1B6B3A] ml-0.5">*</span></label>
+                <label className="text-xs font-semibold text-[#1e293b] block mb-1.5">Service Type<span className="text-[#69b400] ml-0.5">*</span></label>
                 <select required value={svcForm.service_type} onChange={e => setSvcForm(p => ({ ...p, service_type: e.target.value }))}
-                  className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#1B6B3A] focus:ring-2 focus:ring-[#1B6B3A]/10 bg-white">
+                  className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#69b400] focus:ring-2 focus:ring-[#69b400]/10 bg-white">
                   <option value="">Select Service Type</option>
                   {SERVICES.map(s => <option key={s.title}>{s.title}</option>)}
                 </select>
               </div>
               <div>
-                <label className="text-xs font-semibold text-[#1A1F2E] block mb-1.5">{t.concern}<span className="text-[#1B6B3A] ml-0.5">*</span></label>
+                <label className="text-xs font-semibold text-[#1e293b] block mb-1.5">{t.concern}<span className="text-[#69b400] ml-0.5">*</span></label>
                 <textarea required rows={4} placeholder="Describe your concern or requirements..."
                   value={svcForm.concern} onChange={e => setSvcForm(p => ({ ...p, concern: e.target.value }))}
-                  className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#1B6B3A] focus:ring-2 focus:ring-[#1B6B3A]/10 resize-none" />
+                  className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#69b400] focus:ring-2 focus:ring-[#69b400]/10 resize-none" />
               </div>
               {svcState === "error" && <p className="text-red-500 text-xs bg-red-50 rounded-lg px-3 py-2">{svcError}</p>}
               <SubmitBtn loading={svcState === "loading"}><MessageSquare size={15} /> {t.submitRequest}</SubmitBtn>
@@ -1255,8 +1255,8 @@ function SupportPage({ setPage, t }: { setPage: (p: Page) => void; t: typeof T["
       setTicketNo(res.ticket_no ?? "");
       setTicketSent(true);
       setTicketState("idle");
-    } catch (err: any) {
-      setTicketError(err.message ?? "Submission failed.");
+    } catch (err) {
+      setTicketError(err instanceof Error ? err.message : "Submission failed.");
       setTicketState("error");
     }
   }
@@ -1269,7 +1269,7 @@ function SupportPage({ setPage, t }: { setPage: (p: Page) => void; t: typeof T["
 
   return (
     <div>
-      <div className="relative bg-[#0F1520] py-14 sm:py-20 px-4 sm:px-6 overflow-hidden">
+      <div className="relative bg-[#0f172a] py-14 sm:py-20 px-4 sm:px-6 overflow-hidden">
         <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: "radial-gradient(circle, #fff 1px, transparent 1px)", backgroundSize: "28px 28px" }} />
         <div className="relative max-w-4xl mx-auto text-center">
           <SectionLabel light>Customer Support</SectionLabel>
@@ -1283,7 +1283,7 @@ function SupportPage({ setPage, t }: { setPage: (p: Page) => void; t: typeof T["
         <div className="grid grid-cols-3 gap-1.5 mb-7 sm:mb-8 bg-white border border-gray-100 rounded-2xl p-1.5 shadow-sm">
           {tabs.map(tab => (
             <button key={tab.id} onClick={() => setActiveTab(tab.id)}
-              className={`flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 py-2.5 px-2 rounded-xl text-[11px] sm:text-sm font-semibold transition-all leading-tight text-center ${activeTab === tab.id ? "bg-[#1B6B3A] text-white shadow-md" : "text-[#5A6478] hover:text-[#1B6B3A] hover:bg-gray-50"}`}>
+              className={`flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 py-2.5 px-2 rounded-xl text-[11px] sm:text-sm font-semibold transition-all leading-tight text-center ${activeTab === tab.id ? "bg-[#69b400] text-white shadow-md" : "text-[#5A6478] hover:text-[#69b400] hover:bg-gray-50"}`}>
               <tab.icon size={14} className="flex-shrink-0" />
               <span>{tab.label}</span>
             </button>
@@ -1295,14 +1295,14 @@ function SupportPage({ setPage, t }: { setPage: (p: Page) => void; t: typeof T["
           <div>
             <div className="relative mb-5">
               <Search size={15} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
-              <input placeholder="Search FAQs..." className="w-full pl-11 pr-4 py-3 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-[#1B6B3A]" />
+              <input placeholder="Search FAQs..." className="w-full pl-11 pr-4 py-3 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-[#69b400]" />
             </div>
             <div className="space-y-2.5">
               {FAQS.map((faq, i) => (
-                <div key={i} className={`bg-white border rounded-2xl overflow-hidden transition-all ${openFaq === i ? "border-[#1B6B3A]/30 shadow-md shadow-[#1B6B3A]/5" : "border-gray-100 hover:border-gray-200"}`}>
+                <div key={i} className={`bg-white border rounded-2xl overflow-hidden transition-all ${openFaq === i ? "border-[#69b400]/30 shadow-md shadow-[#69b400]/5" : "border-gray-100 hover:border-gray-200"}`}>
                   <button onClick={() => setOpenFaq(openFaq === i ? null : i)} className="w-full flex items-center justify-between p-5 text-left gap-4">
-                    <span className="font-semibold text-[#1A1F2E] text-sm">{faq.q}</span>
-                    <div className={`flex-shrink-0 w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all ${openFaq === i ? "border-[#1B6B3A] bg-[#1B6B3A]" : "border-gray-200"}`}>
+                    <span className="font-semibold text-[#1e293b] text-sm">{faq.q}</span>
+                    <div className={`flex-shrink-0 w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all ${openFaq === i ? "border-[#69b400] bg-[#69b400]" : "border-gray-200"}`}>
                       {openFaq === i ? <ChevronUp size={13} className="text-white" /> : <ChevronDown size={13} className="text-gray-400" />}
                     </div>
                   </button>
@@ -1310,13 +1310,13 @@ function SupportPage({ setPage, t }: { setPage: (p: Page) => void; t: typeof T["
                 </div>
               ))}
             </div>
-            <div className="mt-7 bg-gradient-to-r from-[#E8F2ED] to-[#d8ead0] rounded-2xl p-5 flex flex-col sm:flex-row items-start sm:items-center gap-4">
-              <HelpCircle size={28} className="text-[#1B6B3A] flex-shrink-0" />
+            <div className="mt-7 bg-gradient-to-r from-[#f0f9e8] to-[#e8f5e9] rounded-2xl p-5 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+              <HelpCircle size={28} className="text-[#69b400] flex-shrink-0" />
               <div className="flex-1">
-                <p className="font-bold text-[#1A1F2E] text-sm">Still have questions?</p>
+                <p className="font-bold text-[#1e293b] text-sm">Still have questions?</p>
                 <p className="text-[#5A6478] text-xs mt-0.5">Our support team is happy to help with any concerns not covered above.</p>
               </div>
-              <button onClick={() => setActiveTab("helpdesk")} className="bg-[#1B6B3A] text-white text-xs font-bold px-5 py-2.5 rounded-xl hover:bg-[#155a30] transition-all shadow-md shadow-[#1B6B3A]/20 whitespace-nowrap">
+              <button onClick={() => setActiveTab("helpdesk")} className="bg-[#69b400] text-white text-xs font-bold px-5 py-2.5 rounded-xl hover:bg-[#558b2f] transition-all shadow-md shadow-[#69b400]/20 whitespace-nowrap">
                 Contact Support
               </button>
             </div>
@@ -1333,12 +1333,12 @@ function SupportPage({ setPage, t }: { setPage: (p: Page) => void; t: typeof T["
                 { icon: Mail, title: "Email Support", desc: "support@yanachemodities.com\nResponse within 24 hours" },
                 { icon: AlertCircle, title: "Urgent Concerns", desc: "Skype: yana_chemodities_manila\nViber: +63 956 235 5484" },
               ].map(item => (
-                <div key={item.title} className="bg-white border border-gray-100 rounded-2xl p-4 flex gap-3 hover:border-[#1B6B3A]/20 transition-all">
-                  <div className="w-9 h-9 bg-[#E8F2ED] rounded-xl flex items-center justify-center flex-shrink-0">
-                    <item.icon size={15} className="text-[#1B6B3A]" />
+                <div key={item.title} className="bg-white border border-gray-100 rounded-2xl p-4 flex gap-3 hover:border-[#69b400]/20 transition-all">
+                  <div className="w-9 h-9 bg-[#f0f9e8] rounded-xl flex items-center justify-center flex-shrink-0">
+                    <item.icon size={15} className="text-[#69b400]" />
                   </div>
                   <div>
-                    <p className="font-bold text-[#1A1F2E] text-sm">{item.title}</p>
+                    <p className="font-bold text-[#1e293b] text-sm">{item.title}</p>
                     <p className="text-[#5A6478] text-xs mt-0.5 whitespace-pre-line">{item.desc}</p>
                   </div>
                 </div>
@@ -1347,43 +1347,43 @@ function SupportPage({ setPage, t }: { setPage: (p: Page) => void; t: typeof T["
             <div className="md:col-span-3 bg-white border border-gray-100 rounded-2xl p-5 sm:p-7 shadow-xl shadow-black/5">
               {ticketSent ? (
                 <div className="text-center py-10">
-                  <div className="w-16 h-16 bg-[#E8F2ED] rounded-full flex items-center justify-center mx-auto mb-4"><CheckCircle size={32} className="text-[#1B6B3A]" /></div>
-                  <p className="font-bold text-[#1A1F2E] text-lg">Ticket Submitted!</p>
-                  {ticketNo && <span className="inline-block mt-2 mb-3 text-xs font-mono bg-[#E8F2ED] text-[#1B6B3A] px-4 py-1.5 rounded-full font-bold">{ticketNo}</span>}
+                  <div className="w-16 h-16 bg-[#f0f9e8] rounded-full flex items-center justify-center mx-auto mb-4"><CheckCircle size={32} className="text-[#69b400]" /></div>
+                  <p className="font-bold text-[#1e293b] text-lg">Ticket Submitted!</p>
+                  {ticketNo && <span className="inline-block mt-2 mb-3 text-xs font-mono bg-[#f0f9e8] text-[#69b400] px-4 py-1.5 rounded-full font-bold">{ticketNo}</span>}
                   <p className="text-[#5A6478] text-sm">Our team will respond within 24 business hours.</p>
-                  <button onClick={() => { setTicketSent(false); setTicketForm({ name: "", email: "", category: "Product Inquiry", priority: "Medium", description: "" }); }} className="mt-4 text-sm text-[#1B6B3A] font-semibold hover:underline">Submit another</button>
+                  <button onClick={() => { setTicketSent(false); setTicketForm({ name: "", email: "", category: "Product Inquiry", priority: "Medium", description: "" }); }} className="mt-4 text-sm text-[#69b400] font-semibold hover:underline">Submit another</button>
                 </div>
               ) : (
                 <form onSubmit={handleTicketSubmit}>
                   <SectionLabel>Submit a Ticket</SectionLabel>
-                  <h3 className="font-['Barlow_Condensed'] text-xl sm:text-2xl font-bold text-[#1A1F2E] mb-4">Submit a Support Ticket</h3>
+                  <h3 className="font-['Barlow_Condensed'] text-xl sm:text-2xl font-bold text-[#1e293b] mb-4">Submit a Support Ticket</h3>
                   <div className="space-y-4">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       <FormInput label="Name" required placeholder="Your full name" value={ticketForm.name} onChange={e => setTicketForm(p => ({ ...p, name: e.target.value }))} />
                       <FormInput label="Email" required type="email" placeholder="your@email.com" value={ticketForm.email} onChange={e => setTicketForm(p => ({ ...p, email: e.target.value }))} />
                     </div>
                     <div>
-                      <label className="text-xs font-semibold text-[#1A1F2E] block mb-1.5">Issue Category<span className="text-[#1B6B3A] ml-0.5">*</span></label>
+                      <label className="text-xs font-semibold text-[#1e293b] block mb-1.5">Issue Category<span className="text-[#69b400] ml-0.5">*</span></label>
                       <select value={ticketForm.category} onChange={e => setTicketForm(p => ({ ...p, category: e.target.value }))}
-                        className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#1B6B3A] bg-white">
+                        className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#69b400] bg-white">
                         {["Product Inquiry", "After-Sales Support", "Service Scheduling", "Billing Issue", "General Concern"].map(c => <option key={c}>{c}</option>)}
                       </select>
                     </div>
                     <div>
-                      <label className="text-xs font-semibold text-[#1A1F2E] block mb-2">Priority</label>
+                      <label className="text-xs font-semibold text-[#1e293b] block mb-2">Priority</label>
                       <div className="flex gap-2">
                         {["Low", "Medium", "High"].map(p => (
-                          <label key={p} className={`flex-1 flex items-center justify-center gap-1.5 text-sm cursor-pointer border-2 rounded-xl py-2.5 transition-all font-medium ${ticketForm.priority === p ? "border-[#1B6B3A] bg-[#E8F2ED] text-[#1B6B3A]" : "border-gray-200 text-[#5A6478] hover:border-gray-300"}`}>
+                          <label key={p} className={`flex-1 flex items-center justify-center gap-1.5 text-sm cursor-pointer border-2 rounded-xl py-2.5 transition-all font-medium ${ticketForm.priority === p ? "border-[#69b400] bg-[#f0f9e8] text-[#69b400]" : "border-gray-200 text-[#5A6478] hover:border-gray-300"}`}>
                             <input type="radio" name="priority" value={p} checked={ticketForm.priority === p} onChange={() => setTicketForm(prev => ({ ...prev, priority: p }))} className="sr-only" /> {p}
                           </label>
                         ))}
                       </div>
                     </div>
                     <div>
-                      <label className="text-xs font-semibold text-[#1A1F2E] block mb-1.5">Description<span className="text-[#1B6B3A] ml-0.5">*</span></label>
+                      <label className="text-xs font-semibold text-[#1e293b] block mb-1.5">Description<span className="text-[#69b400] ml-0.5">*</span></label>
                       <textarea required rows={4} placeholder="Describe your concern in detail..."
                         value={ticketForm.description} onChange={e => setTicketForm(p => ({ ...p, description: e.target.value }))}
-                        className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#1B6B3A] focus:ring-2 focus:ring-[#1B6B3A]/10 resize-none" />
+                        className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#69b400] focus:ring-2 focus:ring-[#69b400]/10 resize-none" />
                     </div>
                     {ticketState === "error" && <p className="text-red-500 text-xs bg-red-50 rounded-lg px-3 py-2">{ticketError}</p>}
                     <SubmitBtn loading={ticketState === "loading"}><MessageSquare size={15} /> Submit Ticket</SubmitBtn>
@@ -1398,17 +1398,17 @@ function SupportPage({ setPage, t }: { setPage: (p: Page) => void; t: typeof T["
         {activeTab === "directory" && (
           <div className="space-y-3">
             {CONTACT_DIRECTORY.map(d => (
-              <div key={d.department} className="bg-white border border-gray-100 rounded-2xl p-4 sm:p-5 hover:border-[#1B6B3A]/20 hover:shadow-md transition-all">
+              <div key={d.department} className="bg-white border border-gray-100 rounded-2xl p-4 sm:p-5 hover:border-[#69b400]/20 hover:shadow-md transition-all">
                 <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
                   <div className="flex-1">
-                    <p className="font-bold text-[#1A1F2E]">{d.department}</p>
+                    <p className="font-bold text-[#1e293b]">{d.department}</p>
                     <p className="text-[#5A6478] text-xs mt-0.5">{d.desc}</p>
                   </div>
                   <div className="flex flex-wrap gap-2">
-                    <a href={`mailto:${d.contact}`} className="flex items-center gap-1.5 text-xs font-semibold text-[#1E6FA8] bg-blue-50 border border-blue-200 px-3 py-2 rounded-xl hover:bg-[#1E6FA8] hover:text-white transition-all">
+                    <a href={`mailto:${d.contact}`} className="flex items-center gap-1.5 text-xs font-semibold text-[#60A5FA] bg-blue-50 border border-blue-200 px-3 py-2 rounded-xl hover:bg-[#60A5FA] hover:text-white transition-all">
                       <Mail size={11} /> <span className="max-w-[140px] truncate">{d.contact}</span>
                     </a>
-                    <a href={`tel:${d.phone}`} className="flex items-center gap-1.5 text-xs font-semibold text-[#1B6B3A] bg-[#E8F2ED] border border-[#1B6B3A]/20 px-3 py-2 rounded-xl hover:bg-[#1B6B3A] hover:text-white transition-all">
+                    <a href={`tel:${d.phone}`} className="flex items-center gap-1.5 text-xs font-semibold text-[#69b400] bg-[#f0f9e8] border border-[#69b400]/20 px-3 py-2 rounded-xl hover:bg-[#69b400] hover:text-white transition-all">
                       <Phone size={11} /> {d.phone}
                     </a>
                   </div>
@@ -1439,14 +1439,14 @@ function ResourcesPage({ t }: { t: typeof T["EN"] }) {
   const typeConfig: Record<string, { color: string; bg: string }> = {
     "Manual": { color: "text-blue-700", bg: "bg-blue-50 border-blue-200" },
     "Certificate": { color: "text-amber-700", bg: "bg-amber-50 border-amber-200" },
-    "Datasheet": { color: "text-[#1B6B3A]", bg: "bg-[#E8F2ED] border-green-200" },
+    "Datasheet": { color: "text-[#69b400]", bg: "bg-[#f0f9e8] border-green-200" },
     "Product Document": { color: "text-purple-700", bg: "bg-purple-50 border-purple-200" },
   };
   const typeIcon = (type: string) => type === "Manual" ? Book : type === "Certificate" ? Award : type === "Datasheet" ? FileText : FolderOpen;
 
   return (
     <div>
-      <div className="relative bg-[#0F1520] py-14 sm:py-20 px-4 sm:px-6 overflow-hidden">
+      <div className="relative bg-[#0f172a] py-14 sm:py-20 px-4 sm:px-6 overflow-hidden">
         <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: "radial-gradient(circle, #fff 1px, transparent 1px)", backgroundSize: "28px 28px" }} />
         <div className="relative max-w-4xl mx-auto text-center">
           <SectionLabel light>Downloads</SectionLabel>
@@ -1460,7 +1460,7 @@ function ResourcesPage({ t }: { t: typeof T["EN"] }) {
         <div className="flex gap-2 overflow-x-auto pb-2 mb-5" style={{ scrollbarWidth: "none" }}>
           {categories.map(cat => (
             <button key={cat} onClick={() => setActiveCategory(cat)}
-              className={`flex-shrink-0 text-sm font-semibold px-4 py-2 rounded-xl transition-all ${activeCategory === cat ? "bg-[#1B6B3A] text-white shadow-md shadow-[#1B6B3A]/20" : "bg-white border border-gray-200 text-[#5A6478] hover:border-[#1B6B3A] hover:text-[#1B6B3A]"}`}>
+              className={`flex-shrink-0 text-sm font-semibold px-4 py-2 rounded-xl transition-all ${activeCategory === cat ? "bg-[#69b400] text-white shadow-md shadow-[#69b400]/20" : "bg-white border border-gray-200 text-[#5A6478] hover:border-[#69b400] hover:text-[#69b400]"}`}>
               {cat === "All" ? "All Documents" : cat === "Manual" ? t.manuals : cat === "Certificate" ? t.certificates : cat === "Datasheet" ? t.datasheets : t.productDocs}
             </button>
           ))}
@@ -1471,9 +1471,9 @@ function ResourcesPage({ t }: { t: typeof T["EN"] }) {
           <div className="relative flex-1">
             <Search size={14} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400" />
             <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Search documents, brands..."
-              className="w-full pl-10 pr-4 py-3 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-[#1B6B3A]" />
+              className="w-full pl-10 pr-4 py-3 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-[#69b400]" />
           </div>
-          <select value={brandFilter} onChange={e => setBrandFilter(e.target.value)} className="text-sm border border-gray-200 rounded-xl px-3 py-3 focus:outline-none focus:border-[#1B6B3A] bg-white min-w-[120px]">
+          <select value={brandFilter} onChange={e => setBrandFilter(e.target.value)} className="text-sm border border-gray-200 rounded-xl px-3 py-3 focus:outline-none focus:border-[#69b400] bg-white min-w-[120px]">
             <option value="">All Brands</option>
             {[...new Set(RESOURCES.map(r => r.brand))].map(b => <option key={b}>{b}</option>)}
           </select>
@@ -1486,12 +1486,12 @@ function ResourcesPage({ t }: { t: typeof T["EN"] }) {
             const Icon = typeIcon(r.type);
             const cfg = typeConfig[r.type] ?? { color: "text-gray-600", bg: "bg-gray-50 border-gray-200" };
             return (
-              <div key={r.id} className="bg-white border border-gray-100 rounded-2xl px-4 sm:px-5 py-4 flex items-center gap-4 hover:border-[#1B6B3A]/20 hover:shadow-md transition-all group">
-                <div className="w-10 h-10 bg-[#F4F6F8] rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-[#E8F2ED] transition-colors">
-                  <Icon size={17} className="text-[#1B6B3A]" />
+              <div key={r.id} className="bg-white border border-gray-100 rounded-2xl px-4 sm:px-5 py-4 flex items-center gap-4 hover:border-[#69b400]/20 hover:shadow-md transition-all group">
+                <div className="w-10 h-10 bg-[#F4F6F8] rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-[#f0f9e8] transition-colors">
+                  <Icon size={17} className="text-[#69b400]" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="font-semibold text-[#1A1F2E] text-sm truncate">{r.title}</p>
+                  <p className="font-semibold text-[#1e293b] text-sm truncate">{r.title}</p>
                   <div className="flex flex-wrap items-center gap-2 mt-1">
                     <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ${cfg.bg} ${cfg.color}`}>{r.type}</span>
                     <span className="text-[11px] text-[#5A6478]">{r.brand}</span>
@@ -1499,7 +1499,7 @@ function ResourcesPage({ t }: { t: typeof T["EN"] }) {
                     <span className="text-[11px] text-[#5A6478] hidden sm:block">Updated {r.date}</span>
                   </div>
                 </div>
-                <button className="flex-shrink-0 flex items-center gap-1.5 text-xs font-bold text-[#1B6B3A] border border-[#1B6B3A]/25 px-3 py-2 rounded-xl hover:bg-[#1B6B3A] hover:text-white hover:border-[#1B6B3A] transition-all">
+                <button className="flex-shrink-0 flex items-center gap-1.5 text-xs font-bold text-[#69b400] border border-[#69b400]/25 px-3 py-2 rounded-xl hover:bg-[#69b400] hover:text-white hover:border-[#69b400] transition-all">
                   <Download size={12} /> <span className="hidden sm:inline">Download</span>
                 </button>
               </div>
@@ -1508,18 +1508,18 @@ function ResourcesPage({ t }: { t: typeof T["EN"] }) {
           {filtered.length === 0 && (
             <div className="text-center py-16 bg-white rounded-2xl border border-gray-100">
               <FolderOpen size={40} className="mx-auto mb-3 text-gray-300" />
-              <p className="font-semibold text-[#1A1F2E]">No documents found</p>
+              <p className="font-semibold text-[#1e293b]">No documents found</p>
               <p className="text-sm text-[#5A6478] mt-1">Try adjusting your search or filters</p>
             </div>
           )}
         </div>
 
-        <div className="mt-8 bg-gradient-to-br from-[#0F1520] to-[#1a2536] rounded-2xl p-5 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+        <div className="mt-8 bg-gradient-to-br from-[#0f172a] to-[#1a2536] rounded-2xl p-5 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center gap-4">
           <div className="flex-1">
             <p className="font-['Barlow_Condensed'] text-xl sm:text-2xl font-bold text-white">Need a Specific Document?</p>
             <p className="text-gray-400 text-sm mt-1">If you cannot find what you need, contact our technical team and we will source it for you.</p>
           </div>
-          <a href="mailto:info@yanachemodities.com" className="flex-shrink-0 flex items-center gap-2 bg-[#1B6B3A] text-white font-bold px-5 py-3 rounded-xl hover:bg-[#2D9251] transition-all text-sm shadow-lg shadow-[#1B6B3A]/25">
+          <a href="mailto:info@yanachemodities.com" className="flex-shrink-0 flex items-center gap-2 bg-[#69b400] text-white font-bold px-5 py-3 rounded-xl hover:bg-[#7cb342] transition-all text-sm shadow-lg shadow-[#69b400]/25">
             <Mail size={14} /> Request Document
           </a>
         </div>
@@ -1532,7 +1532,7 @@ function ResourcesPage({ t }: { t: typeof T["EN"] }) {
 function AboutPage({ t, lang }: { t: typeof T["EN"]; lang: Lang }) {
   return (
     <div>
-      <div className="relative bg-[#0F1520] py-16 sm:py-24 px-4 sm:px-6 overflow-hidden">
+      <div className="relative bg-[#0f172a] py-16 sm:py-24 px-4 sm:px-6 overflow-hidden">
         <div className="absolute inset-0">
           <img src="https://images.unsplash.com/photo-1579154204601-01588f351e67?w=1400&h=500&fit=crop&auto=format" alt="Laboratory" className="w-full h-full object-cover opacity-15" />
         </div>
@@ -1547,7 +1547,7 @@ function AboutPage({ t, lang }: { t: typeof T["EN"]; lang: Lang }) {
         <div className="grid md:grid-cols-2 gap-10 sm:gap-12 items-center mb-12 sm:mb-16">
           <div>
             <SectionLabel>{t.ourStory}</SectionLabel>
-            <h2 className="font-['Barlow_Condensed'] text-3xl sm:text-4xl font-bold text-[#1A1F2E] mb-5">{t.fourDecades}</h2>
+            <h2 className="font-['Barlow_Condensed'] text-3xl sm:text-4xl font-bold text-[#1e293b] mb-5">{t.fourDecades}</h2>
             <div className="space-y-3 text-[#5A6478] text-sm sm:text-base leading-relaxed">
               <p>Yana Chemodities Inc. is a leading provider of quality laboratory products and services in the Philippines. We serve the food, industrial, government, life science, educational, and pharmaceutical markets as a nationwide distributor.</p>
               <p>Operating countrywide with offices in Manila and Cebu, our team of over 70 dedicated professionals serves more than 1,000 active buying companies and 100 dealers who trust us as their one-stop lab shop.</p>
@@ -1555,7 +1555,7 @@ function AboutPage({ t, lang }: { t: typeof T["EN"]; lang: Lang }) {
           </div>
           <div className="relative">
             <img src="https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=600&h=450&fit=crop&auto=format" alt="Laboratory professionals" className="rounded-2xl w-full h-60 sm:h-72 object-cover shadow-2xl" />
-            <div className="absolute -bottom-4 -left-4 bg-gradient-to-br from-[#1B6B3A] to-[#155a30] text-white rounded-2xl p-4 shadow-xl">
+            <div className="absolute -bottom-4 -left-4 bg-gradient-to-br from-[#69b400] to-[#558b2f] text-white rounded-2xl p-4 shadow-xl">
               <div className="font-['Barlow_Condensed'] text-3xl sm:text-4xl font-bold">1979</div>
               <div className="text-green-200 text-xs font-medium">Year Founded</div>
             </div>
@@ -1563,26 +1563,26 @@ function AboutPage({ t, lang }: { t: typeof T["EN"]; lang: Lang }) {
         </div>
 
         <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 mb-12 sm:mb-16">
-          <div className="bg-[#0F1520] rounded-2xl sm:rounded-3xl p-6 sm:p-8 text-white">
+          <div className="bg-[#0f172a] rounded-2xl sm:rounded-3xl p-6 sm:p-8 text-white">
             <SectionLabel light>{t.mission}</SectionLabel>
             <h3 className="font-['Barlow_Condensed'] text-xl sm:text-2xl font-bold mb-4">We Strive To "Benefit Society"</h3>
             <p className="text-gray-400 text-sm leading-relaxed mb-4">We believe in conducting our operations with honesty, integrity, and respect.</p>
             <div className="space-y-2.5">
               {["Providing assured quality at fair prices", "Satisfying our customers' needs", "Maintaining mutually beneficial supplier relationships"].map(item => (
                 <div key={item} className="flex items-start gap-2.5 text-sm text-gray-300">
-                  <CheckCircle size={13} className="text-[#4ade80] flex-shrink-0 mt-0.5" /> {item}
+                  <CheckCircle size={13} className="text-[#9ccc65] flex-shrink-0 mt-0.5" /> {item}
                 </div>
               ))}
             </div>
           </div>
-          <div className="bg-gradient-to-br from-[#E8F2ED] to-[#d4ead9] rounded-2xl sm:rounded-3xl p-6 sm:p-8">
+          <div className="bg-gradient-to-br from-[#f0f9e8] to-[#e8f5e9] rounded-2xl sm:rounded-3xl p-6 sm:p-8">
             <SectionLabel>{t.vision}</SectionLabel>
-            <h3 className="font-['Barlow_Condensed'] text-xl sm:text-2xl font-bold text-[#1A1F2E] mb-4">We strive "To Benefit Society"</h3>
+            <h3 className="font-['Barlow_Condensed'] text-xl sm:text-2xl font-bold text-[#1e293b] mb-4">We strive "To Benefit Society"</h3>
             <p className="text-[#5A6478] text-sm leading-relaxed mb-4">Committed to providing quality products and services to meet our customers' needs.</p>
             <div className="space-y-2.5">
               {["Beneficial relationships with suppliers and customers", "Dedicated to customer satisfaction", "Stock availability and price stability"].map(item => (
-                <div key={item} className="flex items-start gap-2.5 text-sm text-[#1A1F2E]">
-                  <CheckCircle size={13} className="text-[#1B6B3A] flex-shrink-0 mt-0.5" /> {item}
+                <div key={item} className="flex items-start gap-2.5 text-sm text-[#1e293b]">
+                  <CheckCircle size={13} className="text-[#69b400] flex-shrink-0 mt-0.5" /> {item}
                 </div>
               ))}
             </div>
@@ -1591,11 +1591,11 @@ function AboutPage({ t, lang }: { t: typeof T["EN"]; lang: Lang }) {
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
           {STATS.map(s => (
-            <div key={s.label} className="bg-white border border-gray-100 rounded-2xl p-5 sm:p-6 text-center hover:shadow-lg hover:border-[#1B6B3A]/20 transition-all">
-              <div className="w-11 h-11 bg-[#E8F2ED] rounded-xl flex items-center justify-center mx-auto mb-3">
-                <s.icon size={20} className="text-[#1B6B3A]" />
+            <div key={s.label} className="bg-white border border-gray-100 rounded-2xl p-5 sm:p-6 text-center hover:shadow-lg hover:border-[#69b400]/20 transition-all">
+              <div className="w-11 h-11 bg-[#f0f9e8] rounded-xl flex items-center justify-center mx-auto mb-3">
+                <s.icon size={20} className="text-[#69b400]" />
               </div>
-              <div className="font-['Barlow_Condensed'] text-3xl sm:text-4xl font-bold text-[#1A1F2E]">{s.value}</div>
+              <div className="font-['Barlow_Condensed'] text-3xl sm:text-4xl font-bold text-[#1e293b]">{s.value}</div>
               <div className="text-[#5A6478] text-xs sm:text-sm mt-1">{lang === "FIL" ? s.labelFIL : s.label}</div>
             </div>
           ))}
@@ -1626,25 +1626,25 @@ function CareersPage({ t }: { t: typeof T["EN"] }) {
     <div className="max-w-4xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
       <div className="text-center mb-10 sm:mb-12">
         <SectionLabel>{t.joinTeam}</SectionLabel>
-        <h1 className="font-['Barlow_Condensed'] text-4xl sm:text-5xl font-bold text-[#1A1F2E] mb-4">{t.careersTitle}</h1>
+        <h1 className="font-['Barlow_Condensed'] text-4xl sm:text-5xl font-bold text-[#1e293b] mb-4">{t.careersTitle}</h1>
         <p className="text-[#5A6478] max-w-xl mx-auto text-sm sm:text-base">{t.careersSubtitle}</p>
       </div>
 
       <div className="bg-white rounded-3xl border border-gray-100 p-8 sm:p-12 text-center mb-6 shadow-xl shadow-black/5">
-        <div className="w-16 h-16 bg-[#E8F2ED] rounded-2xl flex items-center justify-center mx-auto mb-4">
-          <Microscope size={30} className="text-[#1B6B3A]" />
+        <div className="w-16 h-16 bg-[#f0f9e8] rounded-2xl flex items-center justify-center mx-auto mb-4">
+          <Microscope size={30} className="text-[#69b400]" />
         </div>
-        <h3 className="font-['Barlow_Condensed'] text-2xl font-bold text-[#1A1F2E] mb-2">{t.noJobs}</h3>
+        <h3 className="font-['Barlow_Condensed'] text-2xl font-bold text-[#1e293b] mb-2">{t.noJobs}</h3>
         <p className="text-[#5A6478] text-sm mb-6 max-w-sm mx-auto">{t.noJobsSub}</p>
         {careerState === "success" ? (
-          <p className="text-[#1B6B3A] font-semibold text-sm flex items-center justify-center gap-2"><CheckCircle size={16} /> You're subscribed! We'll notify you when positions open.</p>
+          <p className="text-[#69b400] font-semibold text-sm flex items-center justify-center gap-2"><CheckCircle size={16} /> You're subscribed! We'll notify you when positions open.</p>
         ) : (
           <form onSubmit={handleCareerSubscribe} className="max-w-sm mx-auto">
             <div className="flex flex-col sm:flex-row gap-2">
               <input required type="email" value={careerEmail} onChange={e => setCareerEmail(e.target.value)} placeholder="Enter your email"
-                className="flex-1 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#1B6B3A] focus:ring-2 focus:ring-[#1B6B3A]/10" />
+                className="flex-1 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#69b400] focus:ring-2 focus:ring-[#69b400]/10" />
               <button type="submit" disabled={careerState === "loading"}
-                className="w-full sm:w-auto bg-[#1B6B3A] text-white font-bold px-5 py-3 rounded-xl hover:bg-[#155a30] transition-all disabled:opacity-60 flex items-center justify-center gap-2 shadow-md shadow-[#1B6B3A]/20">
+                className="w-full sm:w-auto bg-[#69b400] text-white font-bold px-5 py-3 rounded-xl hover:bg-[#558b2f] transition-all disabled:opacity-60 flex items-center justify-center gap-2 shadow-md shadow-[#69b400]/20">
                 {careerState === "loading" ? <Loader2 size={14} className="animate-spin" /> : t.notifyMe}
               </button>
             </div>
@@ -1655,11 +1655,11 @@ function CareersPage({ t }: { t: typeof T["EN"] }) {
 
       <div className="grid sm:grid-cols-3 gap-4">
         {[{ icon: Beaker, title: "Scientific Culture", desc: "Work with cutting-edge laboratory equipment at the forefront of scientific advancement in the Philippines." }, { icon: Users, title: "Collaborative Team", desc: "Join a professional team serving top scientific institutions, hospitals, and industries nationwide." }, { icon: Award, title: "Growth Opportunities", desc: "Continuous training, factory certifications, and career development pathways for all employees." }].map(b => (
-          <div key={b.title} className="bg-white border border-gray-100 rounded-2xl p-5 hover:shadow-lg hover:border-[#1B6B3A]/20 transition-all">
-            <div className="w-10 h-10 bg-[#E8F2ED] rounded-xl flex items-center justify-center mb-3">
-              <b.icon size={18} className="text-[#1B6B3A]" />
+          <div key={b.title} className="bg-white border border-gray-100 rounded-2xl p-5 hover:shadow-lg hover:border-[#69b400]/20 transition-all">
+            <div className="w-10 h-10 bg-[#f0f9e8] rounded-xl flex items-center justify-center mb-3">
+              <b.icon size={18} className="text-[#69b400]" />
             </div>
-            <h4 className="font-bold text-[#1A1F2E] mb-2 text-sm">{b.title}</h4>
+            <h4 className="font-bold text-[#1e293b] mb-2 text-sm">{b.title}</h4>
             <p className="text-[#5A6478] text-xs leading-relaxed">{b.desc}</p>
           </div>
         ))}
@@ -1680,15 +1680,15 @@ function ContactPage({ t }: { t: typeof T["EN"] }) {
     try {
       await submitInquiry({ type: form.type, name: form.name, company: form.company, email: form.email, phone: form.phone, address: form.address, message: form.message });
       setState("success");
-    } catch (err: any) {
-      setErrMsg(err.message ?? "Submission failed. Please try again.");
+    } catch (err) {
+      setErrMsg(err instanceof Error ? err.message : "Submission failed. Please try again.");
       setState("error");
     }
   }
 
   return (
     <div>
-      <div className="relative bg-[#0F1520] py-14 sm:py-20 px-4 sm:px-6 overflow-hidden">
+      <div className="relative bg-[#0f172a] py-14 sm:py-20 px-4 sm:px-6 overflow-hidden">
         <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: "radial-gradient(circle, #fff 1px, transparent 1px)", backgroundSize: "28px 28px" }} />
         <div className="relative max-w-3xl mx-auto text-center">
           <SectionLabel light>Get in Touch</SectionLabel>
@@ -1705,18 +1705,18 @@ function ContactPage({ t }: { t: typeof T["EN"] }) {
               { city: "Manila Office", address: "151 Kaliraya Street, Quezon City, Philippines", phone: ["+63 927 794 3497", "+63 956 235 5483", "+63 956 235 5484 (Viber)"], landline: ["8781-1048", "8732-0171", "8781-1047", "8732-0163"] },
               { city: "Cebu Office", address: "Cebu City, Philippines", phone: ["+63 945 847 9543"], landline: [] },
             ].map(o => (
-              <div key={o.city} className="bg-white border border-gray-100 rounded-2xl p-5 hover:border-[#1B6B3A]/20 hover:shadow-md transition-all">
-                <h3 className="font-['Barlow_Condensed'] text-xl font-bold text-[#1A1F2E] mb-3">{o.city}</h3>
+              <div key={o.city} className="bg-white border border-gray-100 rounded-2xl p-5 hover:border-[#69b400]/20 hover:shadow-md transition-all">
+                <h3 className="font-['Barlow_Condensed'] text-xl font-bold text-[#1e293b] mb-3">{o.city}</h3>
                 <div className="space-y-2.5 text-sm">
-                  <div className="flex gap-2.5"><MapPin size={14} className="text-[#1B6B3A] flex-shrink-0 mt-0.5" /><span className="text-[#5A6478]">{o.address}</span></div>
-                  <div className="flex gap-2.5"><Phone size={14} className="text-[#1B6B3A] flex-shrink-0 mt-0.5" /><div className="text-[#5A6478]">{o.phone.map(p => <div key={p}>{p}</div>)}</div></div>
+                  <div className="flex gap-2.5"><MapPin size={14} className="text-[#69b400] flex-shrink-0 mt-0.5" /><span className="text-[#5A6478]">{o.address}</span></div>
+                  <div className="flex gap-2.5"><Phone size={14} className="text-[#69b400] flex-shrink-0 mt-0.5" /><div className="text-[#5A6478]">{o.phone.map(p => <div key={p}>{p}</div>)}</div></div>
                   {o.landline.length > 0 && <div className="flex gap-2.5"><Phone size={14} className="text-gray-300 flex-shrink-0 mt-0.5" /><div className="text-[#5A6478]">{o.landline.map(l => <div key={l}>{l}</div>)}</div></div>}
                 </div>
               </div>
             ))}
-            <div className="bg-white border border-gray-100 rounded-2xl p-5 hover:border-[#1B6B3A]/20 transition-all">
-              <div className="flex gap-2.5 text-sm mb-2"><Mail size={14} className="text-[#1B6B3A] flex-shrink-0 mt-0.5" /><span className="text-[#5A6478]">info@yanachemodities.com</span></div>
-              <p className="text-xs text-[#5A6478]">Skype: <span className="font-bold text-[#1A1F2E]">yana_chemodities_manila</span></p>
+            <div className="bg-white border border-gray-100 rounded-2xl p-5 hover:border-[#69b400]/20 transition-all">
+              <div className="flex gap-2.5 text-sm mb-2"><Mail size={14} className="text-[#69b400] flex-shrink-0 mt-0.5" /><span className="text-[#5A6478]">info@yanachemodities.com</span></div>
+              <p className="text-xs text-[#5A6478]">Skype: <span className="font-bold text-[#1e293b]">yana_chemodities_manila</span></p>
             </div>
           </div>
 
@@ -1724,15 +1724,15 @@ function ContactPage({ t }: { t: typeof T["EN"] }) {
           <div className="md:col-span-3 bg-white rounded-2xl sm:rounded-3xl border border-gray-100 p-6 sm:p-8 shadow-xl shadow-black/5">
             {state === "success" ? (
               <div className="text-center py-12">
-                <div className="w-16 h-16 bg-[#E8F2ED] rounded-full flex items-center justify-center mx-auto mb-4"><CheckCircle size={32} className="text-[#1B6B3A]" /></div>
-                <h3 className="font-['Barlow_Condensed'] text-2xl font-bold text-[#1A1F2E] mb-2">Message Sent!</h3>
+                <div className="w-16 h-16 bg-[#f0f9e8] rounded-full flex items-center justify-center mx-auto mb-4"><CheckCircle size={32} className="text-[#69b400]" /></div>
+                <h3 className="font-['Barlow_Condensed'] text-2xl font-bold text-[#1e293b] mb-2">Message Sent!</h3>
                 <p className="text-[#5A6478] text-sm">We will get back to you as soon as possible.</p>
-                <button onClick={() => { setState("idle"); setForm({ name: "", company: "", email: "", phone: "", address: "", type: "Product Inquiry", message: "" }); }} className="mt-4 text-sm text-[#1B6B3A] font-semibold hover:underline">Send another message</button>
+                <button onClick={() => { setState("idle"); setForm({ name: "", company: "", email: "", phone: "", address: "", type: "Product Inquiry", message: "" }); }} className="mt-4 text-sm text-[#69b400] font-semibold hover:underline">Send another message</button>
               </div>
             ) : (
               <form onSubmit={handleSubmit}>
                 <SectionLabel>Message</SectionLabel>
-                <h2 className="font-['Barlow_Condensed'] text-2xl sm:text-3xl font-bold text-[#1A1F2E] mb-5">{t.sendMessage}</h2>
+                <h2 className="font-['Barlow_Condensed'] text-2xl sm:text-3xl font-bold text-[#1e293b] mb-5">{t.sendMessage}</h2>
                 <div className="space-y-4">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <FormInput label="Name" required placeholder="Your full name" value={form.name} onChange={e => setForm(p => ({ ...p, name: e.target.value }))} />
@@ -1744,17 +1744,17 @@ function ContactPage({ t }: { t: typeof T["EN"] }) {
                   </div>
                   <FormInput label="Address" placeholder="Your address" value={form.address} onChange={e => setForm(p => ({ ...p, address: e.target.value }))} />
                   <div>
-                    <label className="text-xs font-semibold text-[#1A1F2E] block mb-1.5">{t.inquiryType}</label>
+                    <label className="text-xs font-semibold text-[#1e293b] block mb-1.5">{t.inquiryType}</label>
                     <select value={form.type} onChange={e => setForm(p => ({ ...p, type: e.target.value }))}
-                      className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#1B6B3A] focus:ring-2 focus:ring-[#1B6B3A]/10 bg-white">
+                      className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#69b400] focus:ring-2 focus:ring-[#69b400]/10 bg-white">
                       {[t.productInquiry, t.requestQuote, "Service Request", t.requestConsultation, "General Inquiry"].map(o => <option key={o}>{o}</option>)}
                     </select>
                   </div>
                   <div>
-                    <label className="text-xs font-semibold text-[#1A1F2E] block mb-1.5">{t.concern}<span className="text-[#1B6B3A] ml-0.5">*</span></label>
+                    <label className="text-xs font-semibold text-[#1e293b] block mb-1.5">{t.concern}<span className="text-[#69b400] ml-0.5">*</span></label>
                     <textarea required rows={4} placeholder="Tell us what you need..."
                       value={form.message} onChange={e => setForm(p => ({ ...p, message: e.target.value }))}
-                      className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#1B6B3A] focus:ring-2 focus:ring-[#1B6B3A]/10 resize-none" />
+                      className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#69b400] focus:ring-2 focus:ring-[#69b400]/10 resize-none" />
                   </div>
                   {state === "error" && <p className="text-red-500 text-xs bg-red-50 rounded-lg px-3 py-2">{errMsg}</p>}
                   <SubmitBtn loading={state === "loading"}><MessageSquare size={15} /> {t.submitMessage}</SubmitBtn>
@@ -1771,12 +1771,12 @@ function ContactPage({ t }: { t: typeof T["EN"] }) {
 // ─── FOOTER ───────────────────────────────────────────────────────────────────
 function Footer({ setPage, t }: { setPage: (p: Page) => void; t: typeof T["EN"] }) {
   return (
-    <footer className="bg-[#0F1520] text-white pt-12 sm:pt-16 pb-20 md:pb-8">
+    <footer className="bg-[#0f172a] text-white pt-12 sm:pt-16 pb-20 md:pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 sm:gap-10 mb-10">
           <div className="col-span-2 md:col-span-2">
             <button onClick={() => setPage("home")} className="flex items-center gap-2.5 mb-4">
-              <div className="w-9 h-9 bg-gradient-to-br from-[#1B6B3A] to-[#155a30] rounded-xl flex items-center justify-center shadow-lg shadow-[#1B6B3A]/30">
+              <div className="w-9 h-9 bg-gradient-to-br from-[#69b400] to-[#558b2f] rounded-xl flex items-center justify-center shadow-lg shadow-[#69b400]/30">
                 <FlaskConical size={18} className="text-white" />
               </div>
               <div>
@@ -1787,7 +1787,7 @@ function Footer({ setPage, t }: { setPage: (p: Page) => void; t: typeof T["EN"] 
             <p className="text-gray-400 text-sm leading-relaxed max-w-xs mb-5">Your trusted partner in chemical supplies and laboratory equipment since 1979. Serving the Philippines nationwide.</p>
             <div className="flex gap-2.5">
               {[Linkedin, Facebook, Youtube].map((Icon, i) => (
-                <a key={i} href="#" className="w-9 h-9 border border-white/10 rounded-xl flex items-center justify-center hover:border-[#1B6B3A] hover:bg-[#1B6B3A] transition-all">
+                <a key={i} href="#" className="w-9 h-9 border border-white/10 rounded-xl flex items-center justify-center hover:border-[#69b400] hover:bg-[#69b400] transition-all">
                   <Icon size={14} />
                 </a>
               ))}
@@ -1812,9 +1812,9 @@ function Footer({ setPage, t }: { setPage: (p: Page) => void; t: typeof T["EN"] 
             </div>
             <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-gray-500 mb-3">Contact</p>
             <div className="space-y-2 text-xs text-gray-400">
-              <div className="flex items-start gap-2"><MapPin size={11} className="text-[#1B6B3A] flex-shrink-0 mt-0.5" /> 151 Kaliraya St, QC</div>
-              <div className="flex items-center gap-2"><Phone size={11} className="text-[#1B6B3A]" /> +63 927 794 3497</div>
-              <div className="flex items-center gap-2"><Mail size={11} className="text-[#1B6B3A]" /> info@yanachemodities.com</div>
+              <div className="flex items-start gap-2"><MapPin size={11} className="text-[#69b400] flex-shrink-0 mt-0.5" /> 151 Kaliraya St, QC</div>
+              <div className="flex items-center gap-2"><Phone size={11} className="text-[#69b400]" /> +63 927 794 3497</div>
+              <div className="flex items-center gap-2"><Mail size={11} className="text-[#69b400]" /> info@yanachemodities.com</div>
             </div>
           </div>
         </div>
